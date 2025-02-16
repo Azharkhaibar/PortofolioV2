@@ -1,0 +1,19 @@
+ .infinite-slider-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .infinite-slider {
+        display: flex;
+        white-space: nowrap;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .infinite-slider img {
+        margin-right: 30px;
+        /* Space between the images */
+        width: 128px;
+        /* Adjust to your desired size */
+        height: auto;
+    }
