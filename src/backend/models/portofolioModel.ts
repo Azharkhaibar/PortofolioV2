@@ -7,9 +7,9 @@ export interface PortofolioAttributesData {
   nama_project: string;
   deskripsi: string;
   publishedAt: Date;
-  features: string[]; // Tipe yang sesuai
-  teknologi: string[]; // Tipe yang sesuai
-  fotoUrl?: string | null; // fotoUrl bisa null atau undefined
+  features: string[]; 
+  teknologi: string[];
+  fotoUrl?: string | null; 
 }
 
 interface PortofolioCreationAttributes extends Optional<PortofolioAttributesData, "id_portofolio"> {}
@@ -21,7 +21,7 @@ class Portofolio extends Model<PortofolioAttributesData, PortofolioCreationAttri
   public publishedAt!: Date;
   public features!: string[];
   public teknologi!: string[];
-  public fotoUrl?: string | null; // Bisa null atau undefined
+  public fotoUrl?: string | null; 
 
   // timestamps
   public readonly createdAt!: Date;

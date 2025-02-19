@@ -7,3 +7,10 @@ export interface PortofolioAttributesData {
   teknologi: string[]; // akan disimpan sebagai JSON
   fotoUrl?: string;
 }
+
+export interface ContactHomeAttributeData {
+  id_contacthome: number,
+  nama: string,
+  pengirim: string,
+  deskripsi: string
+}
