@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../navbar";
 import Footer from "../footer";
-import { Code, Code2, Layers, Package } from "lucide-react";
+import { Circle, Code, Code2, Layers, Package, Star } from "lucide-react";
 
 interface Project {
     id_portofolio: number;
@@ -87,9 +87,8 @@ const ProjectDetail = () => {
         <>
             <div className="bg-[#0F1017] min-h-screen">
                 <Navbar />
-                <div className="w-full px-[120px] gap-5 p-6 mt-20 text-gray-200 flex justify-center">
+                <div className="w-full px-[120px] gap-8 p-6 mt-20 text-gray-200 flex justify-center">
                     <div className="w-1/2">
-                      
                         <img
                             src={imageUrl}
                             alt={project.nama_project}
@@ -98,12 +97,18 @@ const ProjectDetail = () => {
                         />
 
                         {/* Features */}
-                        <div className="mt-6">
-                            <h3 className="text-xl font-semibold text-white">Features:</h3>
-                            <ul className="mt-2 space-y-2">
+                        <div className="mt-6 w-full h-auto p-4 border bg-gray-900/50 border-gray-600/50 rounded-xl">
+                            <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+                                <Star size={25} className="text-yellow-300"></Star>
+                                Key Features</h3>
+                            <ul className="mt-5 space-y-4">
                                 {project.features && project.features.length > 0 ? (
                                     project.features.map((feature) => (
-                                        <li key={feature} className="bg-gray-800 px-4 py-2 rounded-md shadow text-gray-300">
+                                        <li
+                                            key={feature}
+                                            className="bg-transparent flex items-center gap-2 px-4 py-2 rounded-md shadow text-gray-300"
+                                        >
+                                            <Circle size={12} className="text-blue-300" />
                                             {feature}
                                         </li>
                                     ))
@@ -111,6 +116,7 @@ const ProjectDetail = () => {
                                     <li className="text-gray-500">No features available</li>
                                 )}
                             </ul>
+
                         </div>
 
                         {/* Technologies */}
@@ -118,7 +124,7 @@ const ProjectDetail = () => {
                     </div>
 
                     <div className="w-1/2">
-                        <h1 className="text-7xl font-bold text-white mb-4">{project.nama_project}</h1>
+                        <h1 className="text-7xl font-bold text-white mb-4 font-poppins">{project.nama_project}</h1>
                         <p className="mt-10 text-gray-300 leading-relaxed">{project.deskripsi}</p>
                         <p className="mt-2 text-sm text-gray-500">
                             <strong>Published At:</strong> {new Date(project.publishedAt).toLocaleDateString()}
@@ -126,7 +132,7 @@ const ProjectDetail = () => {
 
                         <div className="bg-gray-900 mt-8 rounded-xl p-4 flex items-center justify-center gap-4">
                             {/* Total Teknologi */}
-                            <div className="bg-gray-800 border backdrop-blur-lg w-full border-gray-600/50 flex gap-4 items-center p-4 rounded-xl shadow-lg">
+                            <div className="bg-gray-800/50 border backdrop-blur-lg w-full border-gray-600/50 flex gap-4 items-center p-4 rounded-xl shadow-lg">
                                 <div className="bg-blue-800 p-3 rounded-full">
                                     <Code2 size={28} className="text-blue-200/70" />
                                 </div>
@@ -137,7 +143,7 @@ const ProjectDetail = () => {
                             </div>
 
                             {/* Total Features */}
-                            <div className="bg-gray-800 backdrop-blur-lg border w-full border-gray-600/50 flex gap-4 items-center p-4 rounded-xl shadow-lg">
+                            <div className="bg-gray-800/50 backdrop-blur-lg border w-full border-gray-600/50 flex gap-4 items-center p-4 rounded-xl shadow-lg">
                                 <div className="bg-purple-800 p-3 rounded-full">
                                     <Layers size={28} className="text-blue-200/70" />
                                 </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../navbar";
 import { Code, BadgeCheck, Package } from "lucide-react";
 import axios from "axios";
+
 import RenderPortofolios from "./renderportofolios";
 // Import assets
 import Firebase from "../../../assets/public/img/software/firebase.png";
@@ -34,7 +35,7 @@ interface PortofolioBodyProps {
 }
 
 const PortofolioBody: React.FC<PortofolioBodyProps> = ({ activeSection, portofolios, loading }) => {
-    const [currentSection, setCurrentSection] = useState<string>(activeSection || '');
+    const [currentSection, setCurrentSection] = useState<number>(0);
     const [portfolioData, setPortfolioData] = useState<Portofolio[]>(portofolios || []);
     const [isLoading, setIsLoading] = useState<boolean>(loading);
     useEffect(() => {
