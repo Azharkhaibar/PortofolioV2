@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import Navbar from "../navbar";
 import { Code, BadgeCheck, Package } from "lucide-react";
 import axios from "axios";
-
+import AnimatedContent from "../../../animation/AnimatedContent/AnimatedContent";
 import RenderPortofolios from "./renderportofolios";
+import SplitText from "../../../animation/SplitText/SplitText";
+import { motion } from 'framer-motion'
 // Import assets
 import Firebase from "../../../assets/public/img/software/firebase.png";
 import Javascript from "../../../assets/public/img/software/javascript.png";
@@ -27,6 +29,7 @@ interface Portofolio {
     icon: React.ReactNode;
     text: string;
 }
+
 
 interface PortofolioBodyProps {
     activeSection: string;
@@ -86,37 +89,64 @@ const PortofolioBody: React.FC<PortofolioBodyProps> = ({ activeSection, portofol
         <div>
             <Navbar />
             <div className="text-center pt-44">
-                <h2 className="text-7xl font-bold text-purple-600">Portofolio Showcase</h2>
-                <p className="text-white/50 mt-4">
-                    Explore my journey through projects, certifications, and technical expertise.
-                    <br /> Each section represents a milestone in my continuous learning path.
-                </p>
+                <AnimatedContent
+                    distance={30}
+                    direction="vertical"
+                    reverse={false}
+                    config={{ tension: 80, friction: 20 }}
+                    initialOpacity={0.2}
+                    animateOpacity
+                    scale={1.1}
+                    threshold={0.2}
+                >
+                    <h2 className="text-7xl font-bold text-purple-600 mb-4">Portofolio Showcase</h2>
+                </AnimatedContent>
+                <SplitText
+                    text={`Explore my journey through projects, certifications, and technical expertise.`}
+                    className="text-white/50 pt-8"
+                    delay={20}
+                />
+                <br />
+                <SplitText
+                    text={`Each section represents a milestone in my continuous learning path.`}
+                    className="text-white/50 mt-4"
+                    delay={40}
+                />
             </div>
 
             {/* Tabs Navigation */}
-            <div className="flex items-center p-4 w-10/12 mx-auto gap-6 mt-8 h-auto px-12 justify-center bg-gray-800 rounded-2xl">
-                {ListPorto.map((porto, index) => (
-                    <div
-                        key={index}
-                        role="button"
-                        tabIndex={0}
-                        className={`w-6/12 cursor-pointer p-4 flex flex-col justify-center gap-2 rounded-2xl ${currentSection === index ? "bg-purple-600" : ""
-                            }`}
-                        onClick={() => setCurrentSection(index)}
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter" || e.key === " ") {
-                                setCurrentSection(index);
-                            }
-                        }}
-                    >
-                        <div className="flex justify-center">{porto.icon}</div>
-                        <p className={`text-white text-center text-xl ${currentSection === index ? "text-black" : ""}`}>
-                            {porto.text}
-                        </p>
-                    </div>
+            <AnimatedContent
+            distance={100}
+            delay={20}
+            scale={0.3}
+            config={{ tension: 30, friction: 20}}
+            threshold={0.1}
+            initialOpacity={0.0}
+            >
+                <div className="flex items-center p-4 w-10/12 mx-auto gap-6 mt-8 h-auto px-12 justify-center bg-gray-800/30 border border-gray-700/40 rounded-2xl">
+                    {ListPorto.map((porto, index) => (
+                        <div
+                            key={index}
+                            role="button"
+                            tabIndex={0}
+                            className={`w-6/12 cursor-pointer p-4 flex flex-col justify-center gap-2 rounded-2xl ${currentSection === index ? "bg-purple-600" : ""
+                                }`}
+                            onClick={() => setCurrentSection(index)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    setCurrentSection(index);
+                                }
+                            }}
+                        >
+                            <div className="flex justify-center">{porto.icon}</div>
+                            <p className={`text-white text-center text-xl ${currentSection === index ? "text-black" : ""}`}>
+                                {porto.text}
+                            </p>
+                        </div>
 
-                ))}
-            </div>
+                    ))}
+                </div>
+            </AnimatedContent>
 
             {/* Sections Content */}
             <div className="mt-12 w-10/12 mx-auto">
@@ -135,12 +165,18 @@ const PortofolioBody: React.FC<PortofolioBodyProps> = ({ activeSection, portofol
                 {currentSection === 2 && (
                     <div className="grid grid-cols-6 gap-5">
                         {ListTechIcon.map((tech, index) => (
-                            <div key={index} className="rounded-2xl p-5 bg-gray-900 shadow-lg">
+                            <motion.div
+                                key={index}
+                                className="rounded-2xl p-5 bg-gray-900 shadow-lg"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                            >
                                 <div className="flex flex-col items-center gap-4">
                                     <img src={tech.icon} alt={tech.title} className="w-auto h-[100px] object-cover" />
                                     <p className="text-xl font-bold text-center text-white">{tech.title}</p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 )}

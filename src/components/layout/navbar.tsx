@@ -3,6 +3,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { MdLanguage, MdOutlineNightsStay } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import StarBorder from "../../animation/StarBorder/StarBorder";
 
 const Navbar: React.FC = () => {
     return (
@@ -14,6 +15,7 @@ const Navbar: React.FC = () => {
                         <li><Link to="/" className="text-white hover:text-teal-500 transition-all">Home</Link></li>
                         <li><Link to="/about" className="text-white hover:text-teal-500 transition-all">About</Link></li>
                         <li><Link to="/portofolio" className="text-white hover:text-teal-500 transition-all">Portofolio</Link></li>
+                        <li><Link to="" className="text-white hover:text-teal-500 transition-all">Blogs</Link></li>
                         <li><Link to="/contact" className="text-white hover:text-teal-500 transition-all">Contact</Link></li>
                     </ul>
                 </div>

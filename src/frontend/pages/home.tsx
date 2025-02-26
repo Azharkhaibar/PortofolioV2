@@ -10,7 +10,7 @@ import Contact_Home from "../../components/layout/home_layout/contact";
 
 const Home = () => {
     return (
-        <div className="bg-[#0F1017]">
+        <div className="bg-[#12131e]">
             <Navbar />
             <Header />
             <Pendidikan />

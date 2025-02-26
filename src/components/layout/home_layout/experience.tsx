@@ -1,8 +1,8 @@
 import { FaArrowCircleRight } from "react-icons/fa";
 import { MdOutlineWork } from "react-icons/md";
 import { GoBook } from "react-icons/go";
+import BlurText from "../../../animation/BlurText/BlurText";
 import Test from '../../../assets/public/img/testexperience.png';
-
 const Pendidikan: React.FC = () => {
     const textHeadlines = [
         { text: "Developing software with 2+ years of experience." },
@@ -10,11 +10,15 @@ const Pendidikan: React.FC = () => {
     ];
 
     return (
-        <div className="w-full h-auto text-white mt-18">
-            <h1 className="text-center text-5xl font-medium">
-                {textHeadlines[0].text}
-            </h1>
-            <p className="text-center mt-4 text-white/60">
+        <div className="w-full h-auto text-white mt-36">
+            <BlurText
+                text={textHeadlines[0].text}
+                className="text-center text-5xl pl-52 font-medium"
+                delay={30}
+                animateBy="words"
+                direction="top"
+            />
+            <p className="text-center mt-6 text-white/60">
                 {textHeadlines[1].text}
             </p>
 

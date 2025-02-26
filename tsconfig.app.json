@@ -19,5 +19,5 @@
     "noUncheckedSideEffectImports": true,
     "rootDir": "./src"
   },
-  "include": ["src"]
+  "include": ["src", "animation/SplitText"]
 }

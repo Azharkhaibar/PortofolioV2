@@ -1,9 +1,26 @@
 import { techStackImages } from '../../constant/const';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Download, Code, BadgeCheck, Briefcase } from "lucide-react";
 import fotoGue from '../../../assets/public/img/about/Azhagantengjdisds.jpg'
 import '../../design/style.css'
+import { motion } from 'framer-motion'
+import BlurText from '../../../animation/BlurText/BlurText';
+
+interface Project {
+    id_portofolio: number;
+    nama_project: string;
+    fotoUrl?: string;
+    deskripsi: string;
+    publishedAt: string;
+    features?: string[];
+    teknologi?: string[];
+}
+
 const AboutBody: React.FC = () => {
+    const [project, setProject] = useState<Project | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [totalProjects, setTotalProjects] = useState(0); 
 
     useEffect(() => {
         const slider = document.querySelector(".infinite-slider");
@@ -20,7 +37,7 @@ const AboutBody: React.FC = () => {
             function animateSlider() {
                 scrollPosition += 0.5;
                 if (scrollPosition >= (imageWidth ?? 0) * sliderImages.length) {
-                    scrollPosition = 0; 
+                    scrollPosition = 0;
                 }
                 if (slider instanceof HTMLElement) {
                     slider.style.transform = `translateX(-${scrollPosition}px)`;
@@ -31,14 +48,38 @@ const AboutBody: React.FC = () => {
         }
     }, []);
 
+    useEffect(() => {
+        const fetchProjectData = async () => {
+            setLoading(true)
+            try {
+                const response = await fetch('http://localhost:5000/api/portofolio')
+                if (!response.ok) throw new Error('Error fetching data');
+                const data: Project[] = await response.json(); 
+
+                if (!data || data.length === 0) {
+                    throw new Error("No projects found.");
+                }
+
+                setTotalProjects(data.length);
+
+            } catch (err) {
+                setError((err as Error).message);
+                setProject(null);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProjectData();
+    }, []); 
+
     const stats = [
-        { icon: <Code size={30} className="text-gray-300" />, value: 0, title: "Total Project", desc: "Innovative web solutions crafted" },
+        { icon: <Code size={30} className="text-gray-300" />, value: totalProjects, title: "Total Project", desc: "Innovative web solutions crafted" },
         { icon: <BadgeCheck size={30} className="text-gray-300" />, value: 0, title: "Certificate", desc: "Professional Skill Validated" },
         { icon: <Briefcase size={30} className="text-gray-300" />, value: 0, title: "Years of Experience", desc: "Continuous Learning Journey" },
     ];
 
     return (
-        
         <div className="px-[2.5%]">
             <div className="w-full h-auto flex pt-28">
                 <div className="w-[30%] h-[300px] sticky top-20">
@@ -46,28 +87,56 @@ const AboutBody: React.FC = () => {
                     <h3 className="text-center text-[14px] mt-3 text-gray-500">Fullstack Developer & UI/UX Designer</h3>
                 </div>
                 <div className="w-[70%] h-full pr-[8%] text-white">
-                    <h2 className="text-6xl font-medium ">Hi!, I am Azhar</h2>
-                    <div className="flex items-center gap-4 mt-6">
-                        <button className="flex items-center gap-2 bg-gradient-to-r from-pink-600 to-purple-800 text-white px-4 text-md py-2 rounded-lg shadow-md hover:bg-purple-600 transition">
+                    <motion.h2
+                        className="text-6xl font-medium"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                    >
+                        Hi!, I am Azhar
+                    </motion.h2>
+                    <motion.div
+                        className="flex items-center gap-4 mt-6"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+                    >
+                        <motion.button
+                            className="flex items-center gap-2 bg-gradient-to-r from-pink-600 to-purple-800 text-white px-4 text-md py-2 rounded-lg shadow-md hover:bg-purple-600 transition"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+                        >
                             <Download size={20} />
                             <a href="/cv.pdf" download>Download CV</a>
-                        </button>
-                        <button className="flex items-center gap-2 border-2 border-opacity-15 border-white/30 text-white px-4 py-2 rounded-lg hover:bg-white hover:text-black transition">
+                        </motion.button>
+                        <motion.button
+                            className="flex items-center gap-2 border-2 border-opacity-15 border-white/30 text-white px-4 py-2 rounded-lg hover:bg-white hover:text-black transition"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, ease: "easeOut", delay: 1. }}
+                        >
                             <Code size={20} />
                             <a href="/projects">View Project</a>
-                        </button>
-                    </div>
-                    <p className="text-[16px] mt-8">
-                        I’m Azhar, a Fullstack Developer and UI/UX Designer with a passion for creating seamless digital experiences. My technical and creative background allows me to bridge the gap between design and development, ensuring that every project I work on is not only functional but also visually engaging. My internship at Youtzmedia gave me invaluable hands-on experience, allowing me to refine my approach to designing user-centered products while also mastering the technical skills needed to build them. Through this role, I worked on over 9 projects, each bringing unique challenges that further deepened my problem-solving abilities and broadened my technical knowledge. <br /><br />
-
-                        My approach to development combines a keen eye for design with a solid understanding of both front-end and back-end technologies. Whether it’s transforming wireframes into interactive prototypes or writing clean, scalable code, I focus on delivering solutions that are reliable, scalable, and intuitive for users. Staying updated with the latest industry trends, frameworks, and design principles is a core part of my work philosophy, allowing me to bring innovative and efficient solutions to every project.<br /><br />
-
-                        Beyond technical skills, I believe in the power of collaboration and clear communication. Working with cross-functional teams has shown me the importance of aligning on vision and goals, and I thrive in environments where I can contribute creatively while also learning from others. I’m excited to continue building impactful digital experiences, and I look forward to connecting with like-minded professionals who share the same passion for technology and design. Let’s collaborate and make ideas come to life!
-                    </p>
+                        </motion.button>
+                    </motion.div>
+                    <BlurText
+                        text={`I’m Azhar, a Fullstack Developer and UI/UX Designer with a passion for creating seamless digital experiences. My technical and creative background allows me to bridge the gap between design and development, ensuring that every project I work on is not only functional but also visually engaging.\n\nMy internship at Youtzmedia gave me invaluable hands-on experience, allowing me to refine my approach to designing user-centered products while also mastering the technical skills needed to build them. Through this role, I worked on over 9 projects, each bringing unique challenges that further deepened my problem-solving abilities and broadened my technical knowledge.\n\nMy approach to development combines a keen eye for design with a solid understanding of both front-end and back-end technologies. Whether it’s transforming wireframes into interactive prototypes or writing clean, scalable code, I focus on delivering solutions that are reliable, scalable, and intuitive for users. Staying updated with the latest industry trends, frameworks, and design principles is a core part of my work philosophy, allowing me to bring innovative and efficient solutions to every project.\n\nBeyond technical skills, I believe in the power of collaboration and clear communication. Working with cross-functional teams has shown me the importance of aligning on vision and goals, and I thrive in environments where I can contribute creatively while also learning from others. I’m excited to continue building impactful digital experiences, and I look forward to connecting with like-minded professionals who share the same passion for technology and design. Let’s collaborate and make ideas come to life!`}
+                        className="text-[22px] font-semibold text-white/80 mt-8"
+                        delay={20}
+                        animateBy="words"
+                        direction="bottom"
+                    />
 
                     <div className="flex items-center text-white mt-10 gap-5">
                         {stats.map((stat, index) => (
-                            <div key={index} className="w-[300px] h-auto p-5 rounded-lg bg-gray-800">
+                            <motion.div
+                                key={`${stat.title}-${stat.value}`}
+                                className="w-[300px] h-auto p-5 rounded-lg bg-gray-800/50 border border-gray-700/50"
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1, ease: "easeOut", delay: index * 0.3 }} // Stagger the animation with increasing delay
+                            >
                                 <div className="flex items-center justify-between">
                                     <div className="w-[50px] aspect-square flex items-center justify-center rounded-full bg-gray-600">
                                         {stat.icon}
@@ -78,23 +147,22 @@ const AboutBody: React.FC = () => {
                                     <h3 className="text-2xl mt-4 font-semibold">{stat.title}</h3>
                                     <p className="mt-1 opacity-30">{stat.desc}</p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
-                    
+
                     <div className="p-10 flex items-center gap-36 justify-center overflow-hidden mt-10">
                         <div className="infinite-slider flex gap-10">
-                            {techStackImages.map((TechStack, index) => (
-                                <div key={index}>
+                            {techStackImages.map((TechStack, techStackIndex) => (
+                                <div key={TechStack}>
                                     <img
                                         src={TechStack}
-                                        alt={`TechStack ${index}`}
-                                        className="w-55 h-55 object-cover mx-4" 
+                                        alt={`TechStack ${techStackIndex}`}
+                                        className="w-55 h-55 object-cover mx-4"
                                     />
                                 </div>
                             ))}
                         </div>
-
                     </div>
                 </div>
             </div>
