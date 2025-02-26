@@ -21,15 +21,11 @@ const TambahPortofolio: React.FC = () => {
         teknologi: [],
     });
 
-    // Untuk input fitur dan teknologi baru
     const [newFeature, setNewFeature] = useState("");
     const [newTech, setNewTech] = useState("");
     // State untuk preview foto
     const [previewImage, setPreviewImage] = useState<string | null>(null);
-    // State untuk loading submit
     const [isSubmitting, setIsSubmitting] = useState(false);
-
-    // Handle perubahan pada input teks atau textarea
     const handleChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
             const { name, value } = e.target;
@@ -38,12 +34,9 @@ const TambahPortofolio: React.FC = () => {
         []
     );
 
-
-    // Handle file input untuk upload foto
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0];
-
             // Validasi format gambar
             const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
             if (!allowedTypes.includes(file.type)) {
@@ -51,7 +44,7 @@ const TambahPortofolio: React.FC = () => {
                 return;
             }
 
-            // Validasi ukuran gambar (misalnya maksimal 2MB)
+            // maksimal Validasi gambar 2mb
             if (file.size > 2 * 1024 * 1024) {
                 alert("Ukuran gambar tidak boleh lebih dari 2MB.");
                 return;
@@ -62,8 +55,6 @@ const TambahPortofolio: React.FC = () => {
         }
     };
 
-
-    // Tambah feature ke array
     const handleAddFeature = () => {
         if (newFeature.trim() === "") return;
         setFormData((prev) => ({
@@ -115,9 +106,6 @@ const TambahPortofolio: React.FC = () => {
         // Pastikan mengirimkan array dalam bentuk JSON string
         data.append("features", JSON.stringify(formData.features));
         data.append("teknologi", JSON.stringify(formData.teknologi));
-
-
-        // Pastikan formData.foto ada dan merupakan file
         if (formData.foto) {
             data.append("foto", formData.foto);  // Append file foto jika ada
         }

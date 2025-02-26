@@ -13,7 +13,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }))
 app.use(cors());
 const PORT = process.env.PORT || 5000;
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 
 app.use("/api/contact", contactRoute());
