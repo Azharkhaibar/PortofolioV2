@@ -4,7 +4,8 @@ import path from "path";
 import sequelize from "./config/database";
 import portfolioRoutes from "./routes/portofolioRoute";
 import contactRoute from "./routes/contactRoute";
-import upload from "./middleware/multerconfig";
+import contactHomeRoute from './routes/contactHomeRoute'
+import blogs from './routes/blogRoute'
 import cors from 'cors';
 
 dotenv.config();
@@ -17,7 +18,9 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 
 app.use("/api/contact", contactRoute());
-app.use("/api/portofolio", portfolioRoutes)
+app.use("/api/portofolio", portfolioRoutes);
+app.use("/api/contacthome", contactHomeRoute());
+app.use("/api/blogs", blogs);
 
 sequelize.sync({ force: false }).then(() => {
   console.log("Database Synchronized");

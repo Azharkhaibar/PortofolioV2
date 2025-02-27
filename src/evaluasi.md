@@ -1,0 +1,3 @@
+- Perbaiki Button dan Navigasi ke page portofolio dari featuredproject button
+- memperbaiki handlechangefile foto di tambahBlog
+- memperbaiki syntax keseluruhan di file tambahblog

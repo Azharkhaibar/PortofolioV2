@@ -28,7 +28,6 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
   stagger = 0.03,
 }) => {
   const containerRef = useRef<HTMLHeadingElement>(null);
-
   const splitText = useMemo(() => {
     const text = typeof children === "string" ? children : "";
     return text.split("").map((char, index) => (
@@ -37,18 +36,14 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
       </span>
     ));
   }, [children]);
-
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-
     const scroller =
       scrollContainerRef && scrollContainerRef.current
         ? scrollContainerRef.current
         : window;
-
     const charElements = el.querySelectorAll(".inline-block");
-
     gsap.fromTo(
       charElements,
       {

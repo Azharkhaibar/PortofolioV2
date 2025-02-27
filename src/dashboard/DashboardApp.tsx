@@ -5,6 +5,8 @@ import DashboardLayout from './layouts/dashboardlayout';
 import DashboardHome from './pages/home';
 import DashboardPortofolio from './pages/portofolio'
 import TambahPortofolio from './pages/tambahportofolio';
+import Blog from './pages/blog';
+import AddBlog from './pages/tambahblog';
 const DashboardApp: React.FC = () => {
     return (
         <DashboardLayout>
@@ -14,6 +16,8 @@ const DashboardApp: React.FC = () => {
                 <Route path="home" element={<DashboardHome />} />
                 <Route path='portofolio' element={<DashboardPortofolio />} />
                 <Route path="portofolio/tambah" element={<TambahPortofolio />} />
+                <Route path='blog' element={<Blog />} />
+                <Route path='blog/tambah' element={<AddBlog />}/>
             </Routes>
         </DashboardLayout>
     );

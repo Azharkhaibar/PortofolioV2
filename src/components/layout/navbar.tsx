@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
                         <li><Link to="/" className="text-white hover:text-teal-500 transition-all">Home</Link></li>
                         <li><Link to="/about" className="text-white hover:text-teal-500 transition-all">About</Link></li>
                         <li><Link to="/portofolio" className="text-white hover:text-teal-500 transition-all">Portofolio</Link></li>
-                        <li><Link to="" className="text-white hover:text-teal-500 transition-all">Blogs</Link></li>
+                        <li><Link to="/blog" className="text-white hover:text-teal-500 transition-all">Blogs</Link></li>
                         <li><Link to="/contact" className="text-white hover:text-teal-500 transition-all">Contact</Link></li>
                     </ul>
                 </div>

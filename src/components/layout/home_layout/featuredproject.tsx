@@ -28,16 +28,16 @@ const FeaturedProject: React.FC = () => {
             {
                 breakpoint: 1024, // Tablet breakpoint (tablet or small laptops)
                 settings: {
-                    slidesToShow: 3, // Show 3 items
+                    slidesToShow: 3,
                 },
             },
             {
-                breakpoint: 768, // Mobile breakpoint (phones and smaller tablets)
+                breakpoint: 768, 
                 settings: {
-                    slidesToShow: 1, // Show 1 item
-                    centerMode: true, // Center the active item
-                    centerPadding: "30px", // Adjust padding for centered effect
-                    focusOnSelect: true, // Ensure user can click to select a slide
+                    slidesToShow: 1,
+                    centerMode: true,
+                    centerPadding: "30px",
+                    focusOnSelect: true,
                 },
             },
         ],
@@ -92,7 +92,11 @@ const FeaturedProject: React.FC = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                 >
-                    See All Projects
+                    <button>
+                        <a href="/portofolio">
+                            See All Projects
+                        </a>
+                    </button>
                 </motion.div>
             </div>
         </div>

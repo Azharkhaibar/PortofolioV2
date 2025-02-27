@@ -20,6 +20,11 @@ const Sidebar: React.FC = () => {
                         </NavLink>
                     </li>
                     <li>
+                        <NavLink to="/dashboard/blog" className={({ isActive }) => isActive ? "text-blue-400" : ""}>
+                            <Code2 size={20} className="inline mr-2" /> Blogs
+                        </NavLink>
+                    </li>
+                    <li>
                         <NavLink to="/dashboard/users" className={({ isActive }) => isActive ? "text-blue-400" : ""}>
                             <Users size={20} className="inline mr-2" /> Users
                         </NavLink>

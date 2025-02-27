@@ -7,7 +7,7 @@ import Project from './frontend/pages/project';
 import Contact from './frontend/pages/contact';
 import Portofolio from './frontend/pages/portofolio';
 import ProjectDetail from './components/layout/portofolio_layout/projectDetail';
-
+import Blog from './frontend/pages/blog';
 const App: React.FC = () => {
   return (
     <>
@@ -18,6 +18,7 @@ const App: React.FC = () => {
           <Route path="/about" element={<About />} />
           <Route path="/project" element={<Project />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path='/blog' element={<Blog />} />
           <Route path="/portofolio" element={<Portofolio />} />
           <Route path='/portofolio/:id' element={<ProjectDetail />} />
         </Routes>

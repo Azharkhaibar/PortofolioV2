@@ -117,7 +117,7 @@ const AboutBody: React.FC = () => {
                             transition={{ duration: 1, ease: "easeOut", delay: 1. }}
                         >
                             <Code size={20} />
-                            <a href="/projects">View Project</a>
+                            <a href="/portofolio">View Project</a>
                         </motion.button>
                     </motion.div>
                     <BlurText

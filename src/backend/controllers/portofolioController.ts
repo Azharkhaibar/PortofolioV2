@@ -62,14 +62,12 @@ export const updatePortfolio = async (req: Request, res: Response): Promise<void
       return;
     }
 
-
     portfolio.nama_project = nama_project;
     portfolio.deskripsi = deskripsi;
     portfolio.publishedAt = publishedAt;
     portfolio.features = features;
     portfolio.teknologi = teknologi;
     portfolio.fotoUrl = fotoUrl;
-
     await portfolio.save(); 
     res.json(portfolio); 
   } catch (error) {

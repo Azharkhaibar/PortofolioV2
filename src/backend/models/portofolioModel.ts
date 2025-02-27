@@ -22,8 +22,6 @@ class Portofolio extends Model<PortofolioAttributesData, PortofolioCreationAttri
   public features!: string[];
   public teknologi!: string[];
   public fotoUrl?: string | null; 
-
-  // timestamps
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -48,18 +46,18 @@ Portofolio.init(
       allowNull: false,
     },
     features: {
-      type: DataTypes.JSON, // Ganti dengan JSON untuk array string
+      type: DataTypes.JSON,
       allowNull: false,
-      defaultValue: [], // Default empty array
+      defaultValue: [], 
     },
     teknologi: {
-      type: DataTypes.JSON, // Ganti dengan JSON untuk array string
+      type: DataTypes.JSON,
       allowNull: false,
-      defaultValue: [], // Default empty array
+      defaultValue: [], 
     },
     fotoUrl: {
       type: DataTypes.STRING,
-      allowNull: true, // Bisa null atau undefined
+      allowNull: true, 
     },
   },
   {
