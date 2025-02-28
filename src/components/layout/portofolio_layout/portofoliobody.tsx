@@ -116,20 +116,20 @@ const PortofolioBody: React.FC<PortofolioBodyProps> = ({ activeSection, portofol
 
             {/* Tabs Navigation */}
             <AnimatedContent
-            distance={100}
-            delay={20}
-            scale={0.3}
-            config={{ tension: 30, friction: 20}}
-            threshold={0.1}
-            initialOpacity={0.0}
+                distance={100}
+                delay={20}
+                scale={0.3}
+                config={{ tension: 30, friction: 20 }}
+                threshold={0.1}
+                initialOpacity={0.0}
             >
                 <div className="flex items-center p-4 w-10/12 mx-auto gap-6 mt-8 h-auto px-12 justify-center bg-gray-800/30 border border-gray-700/40 rounded-2xl">
                     {ListPorto.map((porto, index) => (
-                        <div
+                        <motion.div
                             key={index}
                             role="button"
                             tabIndex={0}
-                            className={`w-6/12 cursor-pointer p-4 flex flex-col justify-center gap-2 rounded-2xl ${currentSection === index ? "bg-purple-600" : ""
+                            className={`w-6/12 cursor-pointer p-4 flex flex-col justify-center gap-2 rounded-2xl ${currentSection === index ? "bg-purple-600" : "bg-gray-700/40"
                                 }`}
                             onClick={() => setCurrentSection(index)}
                             onKeyDown={(e) => {
@@ -137,13 +137,19 @@ const PortofolioBody: React.FC<PortofolioBodyProps> = ({ activeSection, portofol
                                     setCurrentSection(index);
                                 }
                             }}
+                            initial={{ scale: 1, opacity: 1 }}
+                            animate={{
+                                scale: currentSection === index ? 1.05 : 0.95,
+                                opacity: currentSection === index ? 1 : 0.5,
+                            }}
+                            whileHover={currentSection !== index ? { scale: 1.02, opacity: 0.7 } : {}}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
                         >
                             <div className="flex justify-center">{porto.icon}</div>
                             <p className={`text-white text-center text-xl ${currentSection === index ? "text-black" : ""}`}>
                                 {porto.text}
                             </p>
-                        </div>
-
+                        </motion.div>
                     ))}
                 </div>
             </AnimatedContent>

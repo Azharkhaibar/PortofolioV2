@@ -24,7 +24,7 @@ const Portofolio = () => {
     }, []);
 
     return (
-        <div className="bg-[#0F1017] min-h-screen">
+        <div className="bg-[#0a0b10] min-h-screen">
             <Navbar />
             <PortofolioBody
                 activeSection="0"  

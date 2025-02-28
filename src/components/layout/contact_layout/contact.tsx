@@ -178,10 +178,10 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    <div className="w-[55%] h-auto bg-gray-800 p-7 rounded-xl">
-                        <div className="w-auto h-auto bg-gray-700 p-4 rounded-xl">
+                    <div className="w-[55%] h-auto bg-gray-800/40 p-7 rounded-xl">
+                        <div className="w-auto h-auto bg-gray-700/40 p-4 rounded-xl">
                             <div className="flex items-center gap-4">
-                                <div className="p-2 rounded-full bg-gray-500">
+                                <div className="p-2 rounded-full bg-gray-700">
                                     <MessageCircleCode size={25} className="text-white font-medium" />
                                 </div>
                                 <h2 className="text-2xl text-white font-semibold">Comment</h2>
@@ -199,7 +199,7 @@ const Contact = () => {
                                         type="text"
                                         id="name"
                                         placeholder="Enter your name"
-                                        className="w-full p-3 mt-3 pl-10 bg-gray-600 border border-gray-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                        className="w-full p-3 mt-3 pl-10 bg-gray-600/40 backdrop-blur-2xl border border-gray-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                                     />
                                 </div>
 
@@ -210,11 +210,11 @@ const Contact = () => {
                                     <textarea
                                         placeholder="Type your message..."
                                         rows={4}
-                                        className="w-full mt-3 pl-10 p-2 bg-gray-600 border border-gray-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                        className="w-full mt-3 pl-10 p-2 bg-gray-600/40 border border-gray-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                                     ></textarea>
                                 </div>
 
-                                <div className="relative mt-6 bg-gray-600 border border-gray-500 p-5 rounded-xl">
+                                <div className="relative mt-6 bg-gray-600/40 border border-gray-500 p-5 rounded-xl">
                                     <label htmlFor="profile-pic" className="mb-3 text-white text-sm font-medium">
                                         Profile Picture (optional)
                                     </label>
@@ -222,7 +222,7 @@ const Contact = () => {
                                         type="file"
                                         id="profile-pic"
                                         accept="image/*"
-                                        className="w-full mt-3 pl-10 p-2 bg-gray-600 border border-gray-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                        className="w-full mt-3 pl-10 p-2 bg-gray-600/40 border border-gray-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                                         onChange={(e) => handleImageChange(e)}
                                     />
                                     <p className="text-white/40 text-center mt-3">Max Size File: 5MB</p>

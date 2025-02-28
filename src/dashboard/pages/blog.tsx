@@ -22,13 +22,14 @@ export interface BlogAttributesData {
     kategori_blog: BlogCategory;
     tags: string[];
     author: string;
-    publishedAt: Date;
+    publishedAt: string;
 }
 
 const Blog = () => {
     const [blogs, setBlogs] = useState<BlogAttributesData[]>([]);
     const [search, setSearch] = useState("");
     const [categoryFilter, setCategoryFilter] = useState<BlogCategory | "">("");
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     useEffect(() => {
         fetchBlogs();
@@ -51,6 +52,16 @@ const Blog = () => {
         } catch (error) {
             console.error("Error deleting blog:", error);
         }
+    };
+
+    const openImage = (imgUrl: string | null) => {
+        if (imgUrl) {
+            setSelectedImage(`http://localhost:5000/uploads/${imgUrl}`);
+        }
+    };
+
+    const closeImage = () => {
+        setSelectedImage(null);
     };
 
     const filteredBlogs = blogs.filter((blog) =>
@@ -102,17 +113,25 @@ const Blog = () => {
                         {filteredBlogs.map((blog) => (
                             <tr key={blog.id_blog} className="border-b">
                                 <td className="p-3">
-                                    <img
-                                        src={blog.blogIMG || "https://via.placeholder.com/100"}
-                                        alt="Blog"
-                                        className="w-16 h-16 object-cover rounded"
-                                    />
+                                    <button
+                                        onClick={() => openImage(blog.blogIMG)}
+                                        className="focus:outline-none"
+                                        aria-label="Perbesar gambar"
+                                    >
+                                        <img
+                                            src={blog.blogIMG ? `http://localhost:5000/uploads/${blog.blogIMG}` : "https://via.placeholder.com/100"}
+                                            alt="Blog"
+                                            className="w-16 h-16 object-cover rounded cursor-pointer transition-transform duration-200 hover:scale-105"
+                                        />
+                                    </button>
                                 </td>
                                 <td className="p-3">{blog.headline_blog}</td>
                                 <td className="p-3">{blog.kategori_blog}</td>
                                 <td className="p-3">{blog.author}</td>
                                 <td className="p-3 flex gap-2">
-                                    <button className="bg-yellow-500 text-white px-3 py-1 rounded">Edit</button>
+                                    <Link to={`/edit/${blog.id_blog}`} className="bg-yellow-500 text-white px-3 py-1 rounded">
+                                        Edit
+                                    </Link>
                                     <button
                                         onClick={() => handleDelete(blog.id_blog)}
                                         className="bg-red-500 text-white px-3 py-1 rounded"
@@ -125,6 +144,33 @@ const Blog = () => {
                     </tbody>
                 </table>
             </div>
+
+            {/* Image Modal */}
+            {selectedImage && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+                    onClick={closeImage}
+                    onKeyDown={(e) => e.key === "Escape" && closeImage()}
+                    tabIndex={0}
+                    role="dialog"
+                    aria-modal="true"
+                >
+                    <div className="relative">
+                        <button
+                            className="absolute top-2 right-2 bg-white text-black p-2 rounded-full shadow-md"
+                            onClick={closeImage}
+                            aria-label="Tutup gambar"
+                        >
+                            ✖
+                        </button>
+                        <img
+                            src={selectedImage}
+                            alt="Zoomed Blog"
+                            className="max-w-screen-md max-h-screen-md rounded-lg"
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

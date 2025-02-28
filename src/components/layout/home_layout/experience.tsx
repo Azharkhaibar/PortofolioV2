@@ -10,7 +10,7 @@ const Pendidikan: React.FC = () => {
     ];
 
     return (
-        <div className="w-full h-auto text-white mt-36">
+        <div className="w-full h-auto text-white mt-20">
             <BlurText
                 text={textHeadlines[0].text}
                 className="text-center text-5xl pl-52 font-medium"

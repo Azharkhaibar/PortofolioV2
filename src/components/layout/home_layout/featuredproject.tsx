@@ -26,7 +26,7 @@ const FeaturedProject: React.FC = () => {
         pauseOnHover: true,
         responsive: [
             {
-                breakpoint: 1024, // Tablet breakpoint (tablet or small laptops)
+                breakpoint: 1024, 
                 settings: {
                     slidesToShow: 3,
                 },

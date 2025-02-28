@@ -120,4 +120,18 @@ export const updateBlogs = async (req: Request, res: Response): Promise<void> =>
   }
 };
 
+export const deletedBlogs = async (req: Request, res: Response):Promise<void> => {
+  try {
+    const { id } = req.params;
+    const deleteBlog = await Blog.findByPk(id)
+    if (!deleteBlog) {
+      res.status(404).json({ error: 'gagal delete blog'})
+      return;
+    }
+    await deleteBlog?.destroy();
+    res.status(200).json({ message: 'blog berhasil di hapus'})
+  } catch(error){
+     res.status(500).json({ error: "Terjadi kesalahan saat menghapus blog" });
+  }
+}
 

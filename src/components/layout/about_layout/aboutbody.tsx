@@ -1,11 +1,15 @@
 import { techStackImages } from '../../constant/const';
 import { useEffect, useState } from 'react';
-import { Download, Code, BadgeCheck, Briefcase } from "lucide-react";
+import {Code, BadgeCheck, Briefcase } from "lucide-react";
 import fotoGue from '../../../assets/public/img/about/Azhagantengjdisds.jpg'
 import '../../design/style.css'
+import fotoDummy from '../../../assets/public/img/about.jpg'
 import { motion } from 'framer-motion'
 import BlurText from '../../../animation/BlurText/BlurText';
-
+import SplitText from '../../../animation/SplitText/SplitText';
+import GitHubCalendar from 'react-github-calendar';
+import { FaBriefcase, FaGraduationCap } from 'react-icons/fa';
+import { education, experiences } from '../../../frontend/data/profile';
 interface Project {
     id_portofolio: number;
     nama_project: string;
@@ -21,7 +25,6 @@ const AboutBody: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [totalProjects, setTotalProjects] = useState(0); 
-
     useEffect(() => {
         const slider = document.querySelector(".infinite-slider");
 
@@ -87,21 +90,40 @@ const AboutBody: React.FC = () => {
                     <h3 className="text-center text-[14px] mt-3 text-gray-500">Fullstack Developer & UI/UX Designer</h3>
                 </div>
                 <div className="w-[70%] h-full pr-[8%] text-white">
-                    <motion.h2
-                        className="text-6xl font-medium"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, ease: "easeOut" }}
-                    >
-                        Hi!, I am Azhar
-                    </motion.h2>
+                    <SplitText
+                        text="Nice to meet you"
+                        className="text-xl mb-4 text-white/40 font-light"
+                        delay={70}
+                    />
+                    <br />
+                        <SplitText
+                            text="Hi there,"
+                            className="text-6xl font-medium"
+                            delay={70}
+                        />
+                        <br />
+                        <SplitText
+                            text="I'am Azhar Khaibar"
+                            className="text-6xl font-medium"
+                            delay={90}
+                        />
+                 
+                    <BlurText
+                        text={`I work as a User Interface & User Experience designer creating thoughtful experiences with the combination of design, business and marketing.`}
+                        className="text-[18px] font-semibold text-white/80 mt-5"
+                        delay={20}
+                        animateBy="letters"
+                        direction="bottom"
+                    />
+
+                    <img src={fotoDummy} alt='fotodummy' className='w-full mt-10 h-96 object-cover' />
                     <motion.div
-                        className="flex items-center gap-4 mt-6"
+                        className="flex items-center gap-4 mt-4"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
                     >
-                        <motion.button
+                        {/* <motion.button
                             className="flex items-center gap-2 bg-gradient-to-r from-pink-600 to-purple-800 text-white px-4 text-md py-2 rounded-lg shadow-md hover:bg-purple-600 transition"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -118,15 +140,82 @@ const AboutBody: React.FC = () => {
                         >
                             <Code size={20} />
                             <a href="/portofolio">View Project</a>
-                        </motion.button>
+                        </motion.button> */}
                     </motion.div>
                     <BlurText
-                        text={`I’m Azhar, a Fullstack Developer and UI/UX Designer with a passion for creating seamless digital experiences. My technical and creative background allows me to bridge the gap between design and development, ensuring that every project I work on is not only functional but also visually engaging.\n\nMy internship at Youtzmedia gave me invaluable hands-on experience, allowing me to refine my approach to designing user-centered products while also mastering the technical skills needed to build them. Through this role, I worked on over 9 projects, each bringing unique challenges that further deepened my problem-solving abilities and broadened my technical knowledge.\n\nMy approach to development combines a keen eye for design with a solid understanding of both front-end and back-end technologies. Whether it’s transforming wireframes into interactive prototypes or writing clean, scalable code, I focus on delivering solutions that are reliable, scalable, and intuitive for users. Staying updated with the latest industry trends, frameworks, and design principles is a core part of my work philosophy, allowing me to bring innovative and efficient solutions to every project.\n\nBeyond technical skills, I believe in the power of collaboration and clear communication. Working with cross-functional teams has shown me the importance of aligning on vision and goals, and I thrive in environments where I can contribute creatively while also learning from others. I’m excited to continue building impactful digital experiences, and I look forward to connecting with like-minded professionals who share the same passion for technology and design. Let’s collaborate and make ideas come to life!`}
+                        text={`I’m Azhar, a Fullstack Developer and UI/UX Designer with a passion for creating seamless digital experiences.  my technical knowledge.\n\nMy approach to development combines a keen eye for design with a solid understanding of both front-end and back-end technologies. Whether it’s transforming wireframes into interactive prototypes or writing clean, scalable code, I focus on delivering solutions that are reliable, scalable, and intuitive for users. Staying updated with the latest industry trends, frameworks, and design principles is a core part of my work philosophy, allowing me to bring innovative and efficient solutions to every project.\n\nBeyond technical skills, I believe in the power of collaboration and clear communication. Working with cross-functional teams has shown me the importance of aligning on vision and goals, and I thrive in environments where I can contribute creatively while also learning from others. I’m excited to continue building impactful digital experiences, and I look forward to connecting with like-minded professionals who share the same passion for technology and design. Let’s collaborate and make ideas come to life!`}
                         className="text-[22px] font-semibold text-white/80 mt-8"
                         delay={20}
                         animateBy="words"
                         direction="bottom"
                     />
+
+                    <div className="w-full max-w-4xl mx-auto py-20 px-6 text-white">
+                        <h2 className="text-4xl font-bold text-center mb-16">My Journey</h2>
+                        <div className="relative border-l-4 border-gray-800/60 pl-2 space-y-16">
+                            {experiences.map((exp, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, x: -50 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: index * 0.3 }}
+                                    className="relative pl-8"
+                                >
+                                    <div className="absolute -left-7 top-0 w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
+                                        <img src={exp.logo} alt={exp.company} className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className='flex items-center'>
+                                            <h3 className="text-xl font-semibold">{exp.company}</h3>
+                                            <h3 className="text-xl font-semibold italic">{exp.modelWork}</h3>
+                                        </div>
+                                        <p className="text-gray-400">{exp.date}</p>
+                                        <p className="text-lg font-medium">{exp.role}</p>
+                                        <p className="text-gray-300 mt-2">Tech Used: {exp.tech.join(', ')}</p>
+                                        <ul className="text-gray-400 list-disc list-outside space-y-1 pl-5">
+                                            {exp.tasks.map((task, i) => (
+                                                <li key={i}>{task}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </motion.div>
+                            ))}
+                            {education.map((edu, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, x: -50 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: index * 0.3 }}
+                                    className="relative pl-8"
+                                >
+                                    <div className="absolute -left-7 top-0 w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
+                                        <img src={edu.logo} alt={edu.school} className="w-full h-full object-contain" />
+                                    </div>
+                                    <div className="flex flex-col gap-1">
+                                        <h3 className="text-xl font-semibold">{edu.school}</h3>
+                                        <p className="text-gray-400">{edu.date}</p>
+                                        <p className="mt-1 text-lg font-medium">{edu.major}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+
+
+
+                    <div className='mt-10'>
+                        <h2 className="text-2xl font-semibold text-white">GitHub Contributions</h2>
+                        <GitHubCalendar
+                            username="Azharkhaibar" // Ganti dengan username GitHub kamu
+                            colorScheme="dark"
+                            blockSize={12.5}
+                            blockMargin={4}
+                            fontSize={16}
+                        />
+
+                    </div>
+
+                    {/* tolong buatkan github contribution graph milik saya Azharkhaibar */}
 
                     <div className="flex items-center text-white mt-10 gap-5">
                         {stats.map((stat, index) => (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import axios from "axios";
 import { BlogCategory } from "./blog";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ const AddBlog = () => {
     const [tagInput, setTagInput] = useState("");
     const [author, setAuthor] = useState("");
     const [image, setImage] = useState<File | null>(null);
+    const [previewImage, setPreviewImage] = useState<string | null>(null);
     const navigate = useNavigate();
 
     // ✅ Fungsi menambahkan tag
@@ -19,57 +20,62 @@ const AddBlog = () => {
         const trimmedTag = tagInput.trim();
         if (trimmedTag === "" || tags.includes(trimmedTag)) return;
         setTags([...tags, trimmedTag]);
-        setTagInput(""); 
+        setTagInput("");
     };
+
     const removeTag = (index: number) => {
         setTags(tags.filter((_, i) => i !== index));
     };
 
+    // ✅ Fungsi untuk mengubah file gambar
     const changeFileHandle = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-        const file = e.target.files[0];
-        const allowedTypesIMG = ["image/jpeg", "image/png", "image/webp"];
-        if(!allowedTypesIMG.includes(file.type)) {
-            alert("Format gambar harus JPG, PNG, atau WEBP.");
-            return;
-        }
-        if (file.size > 2 * 1024 * 1024) {
-            alert("Ukuran gambar tidak boleh lebih dari 2MB.");
-            return;
-        }
-            setFormData((prev) => ({ ...prev, foto: file }));
+            const file = e.target.files[0];
+            const allowedTypesIMG = ["image/jpeg", "image/png", "image/webp"];
+
+            if (!allowedTypesIMG.includes(file.type)) {
+                alert("Format gambar harus JPG, PNG, atau WEBP.");
+                return;
+            }
+
+            if (file.size > 2 * 1024 * 1024) {
+                alert("Ukuran gambar tidak boleh lebih dari 2MB.");
+                return;
+            }
+
+            setImage(file);
             setPreviewImage(URL.createObjectURL(file));
         }
-    }
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!headline || !description || !detailDescription || !category || !author || !image) {
-            console.error("Ada data yang kosong!");
+            alert("Harap isi semua field yang diperlukan!");
             return;
         }
 
         const formData = new FormData();
         formData.append("headline_blog", headline);
         formData.append("deskripsi_blog", description);
-        formData.append("detail_deskripsi_blog", detailDescription); // ✅ Perbaikan nama variabel
+        formData.append("detail_deskripsi_blog", detailDescription);
         formData.append("kategori_blog", category);
         formData.append("tags", JSON.stringify(tags));
         formData.append("author", author);
         formData.append("publishedAt", new Date().toISOString());
-        formData.append("foto", image); 
+        formData.append("foto", image);
+
         try {
             const response = await axios.post("http://localhost:5000/api/blogs", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             console.log("Success:", response.data);
-            navigate("/"); 
+            navigate("/");
         } catch (error) {
             console.error("Error adding blog:", error);
         }
     };
-
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen">
@@ -119,16 +125,9 @@ const AddBlog = () => {
                     {tags.length > 0 && (
                         <ul className="mt-2 space-y-1">
                             {tags.map((tag, index) => (
-                                <li
-                                    key={index}
-                                    className="flex justify-between items-center bg-gray-200 px-3 py-1 rounded-md"
-                                >
+                                <li key={index} className="flex justify-between items-center bg-gray-200 px-3 py-1 rounded-md">
                                     <span>{tag}</span>
-                                    <button
-                                        type="button"
-                                        onClick={() => removeTag(index)}
-                                        className="text-red-500 hover:text-red-700"
-                                    >
+                                    <button type="button" onClick={() => removeTag(index)} className="text-red-500 hover:text-red-700">
                                         Remove
                                     </button>
                                 </li>
@@ -141,19 +140,31 @@ const AddBlog = () => {
                     <label htmlFor="author" className="block font-semibold">Penulis</label>
                     <input id="author" type="text" className="border p-2 rounded w-full" value={author} onChange={(e) => setAuthor(e.target.value)} required />
                 </div>
+
+                {/* ✅ Input Gambar */}
                 <div className="mb-4">
                     <label htmlFor="image" className="block font-semibold">Upload Gambar</label>
                     <input
                         id="image"
                         type="file"
-                        accept="image/*"
-                        onChange={(e) => setImage(e.target.files?.[0] || null)}
+                        accept="image/jpeg, image/png, image/webp"
+                        onChange={changeFileHandle}
                         className="border p-2 rounded w-full"
                     />
+                    {previewImage && (
+                        <div className="mt-2">
+                            <img src={previewImage} alt="Preview" className="w-32 h-32 object-cover rounded" />
+                        </div>
+                    )}
                 </div>
+
                 <div className="flex gap-4">
-                    <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Tambah</button>
-                    <button type="button" onClick={() => navigate("/")} className="bg-gray-500 text-white px-4 py-2 rounded">Batal</button>
+                    <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+                        Tambah
+                    </button>
+                    <button type="button" onClick={() => navigate("/")} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">
+                        Batal
+                    </button>
                 </div>
             </form>
         </div>

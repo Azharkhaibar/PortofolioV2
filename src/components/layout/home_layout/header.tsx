@@ -4,92 +4,65 @@ import AnimatedContent from "../../../animation/AnimatedContent/AnimatedContent"
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { BiDockLeft } from "react-icons/bi";
-
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+const socialLinks = [
+    { icon: <BiDockLeft className="text-xl" />, label: "Resume" },
+    { icon: <FaLinkedin className="text-xl" />, label: "LinkedIn" },
+    { icon: <FaGithub className="text-xl" />, label: "GitHub" },
+];
 const Header: React.FC = () => {
-    const velocity = 100;
     return (
-        <div className="relative">
+        <div className="relative bg-grid-pattern min-h-screen flex flex-col justify-center items-center text-center px-6">
             <Navbar />
-            <div className="flex w-full h-120% relative">
-                <div className="w-2/3 h-full mt-[10%] px-[120px] ">
-                    <h1 className="text-6xl mb-8 leading-[90%] text-white font-bold ">
-                        <SplitText
-                            text="Hi!,"
-                            className="text-4xl text-white"
-                            delay={50}
-                        />
-                        <br />
-                        <SplitText
-                            text="I'm "
-                            className="text-7xl text-white font-bold"
-                            delay={30}
-                        />
-                        <SplitText
-                            text="Azhar"
-                            className="text-7xl bg-gradient-to-r from-pink-600 to-purple-800 font-bold bg-clip-text"
-                            delay={30}
-                        />
-                        <SplitText
-                            text=", Fullstack Developer and UI/UX Designer"
-                            className="text-7xl text-white font-bold"
-                            delay={30}
-                        />
-                    </h1>
+            <div className="w-full max-w-3xl mx-auto">
+                <h1 className="text-6xl mb-6 leading-[90%] text-white font-bold">
+                    <SplitText text="Hi," className="text-4xl text-white" delay={50} />
+                    <SplitText text="I'm " className="text-4xl text-white font-bold mb-4" delay={30} />
+                    <br />
                     <SplitText
-                        text="I'm a self-taught developer, who's currently pursuing Full-Stack development to create stunning user experiences on the front-end, and scalable, secure infrastructure on the backend."
-                        className="text-lg font-medium mt-20 text-white/60"
-                        delay={20}
+                        text="Azhar Khaibar"
+                        className="text-[80px] bg-gradient-to-r from-pink-600 to-purple-800 font-bold bg-clip-text"
+                        delay={30}
                     />
-
-                    <div className="flex gap-4 mt-7">
-                        <AnimatedContent
-                            distance={100}
-                            direction="vertical"
-                            reverse={false}
-                            config={{ tension: 80, friction: 20 }}
-                            initialOpacity={0.2}
-                            animateOpacity
-                            scale={1.1}
-                            threshold={0.2}
-                        >
-                            <button className="bg-transparent rounded-full text-white border border-white py-2 px-4">
-                                Read My Blogs
-                            </button>
-                        </AnimatedContent>
-                        <AnimatedContent
-                            distance={100}
-                            direction="vertical"
-                            reverse={false}
-                            config={{ tension: 40, friction: 20 }}
-                            initialOpacity={0.2}
-                            animateOpacity
-                            scale={1.1}
-                            threshold={0.2}
-                        >
-                            <button className="py-2 rounded-full px-4 bg-gradient-to-r from-pink-600 to-purple-800 text-white flex items-center">
-                                Know me more
-                                <MdOutlineKeyboardArrowRight className="ml-2 text-white" />
-                            </button>
-                        </AnimatedContent>
-                    </div>
-                    <div className="flex items-center mt-5 gap-4">
-                        <div className="flex items-center gap-2 text-white text-opacity-50">
-                            <BiDockLeft className="text-xl" />
-                            Resume
-                        </div>
-                        <div className="flex items-center gap-2 text-white text-opacity-50">
-                            <FaLinkedin className="text-xl" />
-                            LinkedIn
-                        </div>
-                        <div className="flex items-center gap-2 text-white text-opacity-50">
-                            <FaGithub className="text-xl" />
-                            GitHub
-                        </div>
-                    </div>
+                </h1>
+                <SplitText
+                    text="I'm a self-taught developer, who's currently pursuing Full-Stack development to create stunning user experiences on the front-end, and scalable, secure infrastructure on the backend."
+                    className="text-2xl font-medium mt-4 text-white/60 max-w-lg mx-auto"
+                    delay={20}
+                />
+                <div className="flex justify-center gap-4 mt-7">
+                    <AnimatedContent distance={100} direction="vertical">
+                        <Link to="/blog" className="bg-transparent rounded-full text-white border border-white py-2 px-6">
+                            Read My Blogs
+                        </Link>
+                    </AnimatedContent>
+                    <AnimatedContent distance={100} direction="vertical">
+                        <Link to="/portofolio" className="py-2 rounded-full px-6 bg-gradient-to-r from-pink-600 to-purple-800 text-white flex items-center">
+                            Know me more
+                            <MdOutlineKeyboardArrowRight className="ml-2 text-white" />
+                        </Link>
+                    </AnimatedContent>
                 </div>
-                <div className="w-1/3 h-full bg-black bg-opacity-60">
-                    {/* Optional image or content can go here */}
-                </div> 
+                <motion.div
+                    initial={{ opacity: 0, y: 80 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, ease: "easeOut" }} // Lebih lambat
+                    className="flex justify-center items-center gap-6 mt-6 text-white text-opacity-50"
+                >
+                    {socialLinks.map((link, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.9, delay: index * 0.3, ease: "easeOut" }} // Per elemen lebih lambat
+                            className="flex items-center gap-2 cursor-pointer hover:text-white transition"
+                        >
+                            {link.icon}
+                            {link.label}
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
         </div>
     );
