@@ -93,25 +93,25 @@ const AboutBody: React.FC = () => {
                     <SplitText
                         text="Nice to meet you"
                         className="text-xl mb-4 text-white/40 font-light"
-                        delay={70}
+                        delay={40}
                     />
                     <br />
                         <SplitText
                             text="Hi there,"
-                            className="text-6xl font-medium"
-                            delay={70}
+                            className="text-6xl font-bold"
+                            delay={40}
                         />
                         <br />
                         <SplitText
                             text="I'am Azhar Khaibar"
-                            className="text-6xl font-medium"
-                            delay={90}
+                            className="text-6xl font-bold"
+                            delay={50}
                         />
                  
                     <BlurText
                         text={`I work as a User Interface & User Experience designer creating thoughtful experiences with the combination of design, business and marketing.`}
-                        className="text-[18px] font-semibold text-white/80 mt-5"
-                        delay={20}
+                        className="text-[18px] font-medium text-white/80 mt-5"
+                        delay={5}
                         animateBy="letters"
                         direction="bottom"
                     />
@@ -144,7 +144,7 @@ const AboutBody: React.FC = () => {
                     </motion.div>
                     <BlurText
                         text={`I’m Azhar, a Fullstack Developer and UI/UX Designer with a passion for creating seamless digital experiences.  my technical knowledge.\n\nMy approach to development combines a keen eye for design with a solid understanding of both front-end and back-end technologies. Whether it’s transforming wireframes into interactive prototypes or writing clean, scalable code, I focus on delivering solutions that are reliable, scalable, and intuitive for users. Staying updated with the latest industry trends, frameworks, and design principles is a core part of my work philosophy, allowing me to bring innovative and efficient solutions to every project.\n\nBeyond technical skills, I believe in the power of collaboration and clear communication. Working with cross-functional teams has shown me the importance of aligning on vision and goals, and I thrive in environments where I can contribute creatively while also learning from others. I’m excited to continue building impactful digital experiences, and I look forward to connecting with like-minded professionals who share the same passion for technology and design. Let’s collaborate and make ideas come to life!`}
-                        className="text-[22px] font-semibold text-white/80 mt-8"
+                        className="text-[22px] font-medium text-white/80 mt-8"
                         delay={20}
                         animateBy="words"
                         direction="bottom"

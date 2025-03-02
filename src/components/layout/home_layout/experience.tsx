@@ -23,7 +23,7 @@ const Pendidikan: React.FC = () => {
             </p>
 
             <div className="w-full h-[70vh] flex justify-center items-center mt-4 gap-5">
-                <div className="w-[42%] h-[80%] flex flex-col items-center p-5 border border-gray-700 rounded-2xl shadow-lg relative">
+                <div className="w-[42%] h-[80%] flex flex-col bg-gray-800 items-center p-5 border border-gray-700 rounded-2xl shadow-lg relative">
                     <div className="absolute top-5 left-5 flex gap-2">
                         <div className="w-3 h-3 rounded-full bg-red-500"></div>
                         <div className="w-3 h-3 rounded-full bg-blue-500"></div>
@@ -66,7 +66,7 @@ const Pendidikan: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="w-[42%] h-[80%] flex flex-col items-center p-5 bg-blackAlpha-50 border border-gray-700 rounded-2xl shadow-lg relative">
+                <div className="w-[42%] h-[80%] flex flex-col items-center bg-gray-800 p-5 bg-blackAlpha-50 border border-gray-700 rounded-2xl shadow-lg relative">
                     <div className="absolute top-5 left-5 flex gap-2">
                         <div className="w-3 h-3 rounded-full bg-red-500"></div>
                         <div className="w-3 h-3 rounded-full bg-blue-500"></div>

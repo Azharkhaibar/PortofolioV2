@@ -31,7 +31,7 @@ const Header: React.FC = () => {
                     className="text-2xl font-medium mt-4 text-white/60 max-w-lg mx-auto"
                     delay={20}
                 />
-                <div className="flex justify-center gap-4 mt-7">
+                <div className="flex justify-center gap-4 mt-7 items-center">
                     <AnimatedContent distance={100} direction="vertical">
                         <Link to="/blog" className="bg-transparent rounded-full text-white border border-white py-2 px-6">
                             Read My Blogs

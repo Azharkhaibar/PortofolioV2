@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../components/layout/navbar";
 import Header from "../../components/layout/home_layout/header";
 import Footer from "../../components/layout/footer";
+import BlogHome from "../../components/layout/home_layout/blog";
 import Pendidikan from "../../components/layout/home_layout/experience";
 import TechStack from "../../components/layout/home_layout/techstack";
 import FeaturedProject from "../../components/layout/home_layout/featuredproject";
@@ -17,6 +18,7 @@ const Home = () => {
             <TechStack />
             <FeaturedProject />
             <Certificate />
+            <BlogHome />
             <Contact_Home />
             <Footer />
         </div>
