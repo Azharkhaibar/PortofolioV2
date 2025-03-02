@@ -89,20 +89,23 @@ export default function CommentSection() {
                 </form>
                 <div className="mt-6 overflow-y-auto max-h-[300px]">
                     {comments.map((comment, index) => (
-                        <div key={index} className="flex items-start bg-gray-600 p-3 rounded-lg mb-4 relative">
+                        <div key={index} className="flex items-start bg-gray-600/20 border border-gray-400/10 p-3 rounded-lg mb-4 relative">
                             {comment.profilePic ? (
                                 <img src={comment.profilePic} alt="Profile" className="w-12 h-12 rounded-full mr-4" />
                             ) : (
-                                <div className="w-12 h-12 bg-gray-500 rounded-full flex items-center justify-center text-white font-semibold mr-4">
+                                <div className="w-12 h-12 bg-gray-500/20 rounded-full flex items-center justify-center text-white font-semibold mr-4">
                                     {comment.name.slice(0, 2).toUpperCase()}
                                 </div>
                             )}
-                            <div className="flex justify-between gap-120">
-                                <div className="">
+                            <div className="flex justify-between w-full">
+                                <div className="flex-1">
                                     <h3 className="text-white text-md font-semibold">{comment.name}</h3>
                                     <p className="text-gray-300 text-sm">{comment.message}</p>
                                 </div>
-                                <span className="text-gray-400 text-xs mt-1">{moment(comment.timestamp).fromNow()}</span>
+                                <div>
+                                    <span className="text-gray-400 text-xs whitespace-nowrap">{moment(comment.timestamp || new Date().toISOString()).fromNow()
+                                    }</span>
+                                </div>
                             </div>
                         </div>
                     ))}
