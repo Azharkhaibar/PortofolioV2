@@ -2,7 +2,7 @@ import { useState } from "react";
 import { formContact } from "../../../lib/interface/form";
 import { User, Mail, MessageCircle, Check, X, Linkedin, Instagram, Youtube, Github, MessageCircleCode } from "lucide-react";
 import Navbar from "../navbar";
-import Avatar from "react-avatar";
+import CommentSection from "./comment_guest";
 const Contact = () => {
 
     const [formData, setFormData] = useState<formContact>({
@@ -178,116 +178,7 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    {/* comment */}
-
-                    <div className="w-[55%] h-auto bg-gray-800/40 p-7 rounded-xl">
-                        <div className="w-auto h-auto bg-gray-700/40 p-4 rounded-xl">
-                            <div className="flex items-center gap-4">
-                                <div className="p-2 rounded-full bg-gray-700">
-                                    <MessageCircleCode size={25} className="text-white font-medium" />
-                                </div>
-                                <h2 className="text-2xl text-white font-semibold">Comment</h2>
-                                <p className="text-2xl text-white font-semibold">(0)</p>
-                            </div>
-
-                            <div className="w-full border-t border-gray-600 mt-4"></div>
-
-                            <form className="flex flex-col gap-4">
-                                <div className="relative mt-3">
-                                    <label htmlFor="name" className="mb-3 text-white text-sm font-medium">
-                                        Name*
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        placeholder="Enter your name"
-                                        className="w-full p-3 mt-3 pl-10 bg-gray-600/40 backdrop-blur-2xl border border-gray-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                    />
-                                </div>
-
-                                <div className="relative mt-3">
-                                    <label htmlFor="message" className="mb-3 text-white text-sm font-medium">
-                                        Message*
-                                    </label>
-                                    <textarea
-                                        placeholder="Type your message..."
-                                        rows={4}
-                                        className="w-full mt-3 pl-10 p-2 bg-gray-600/40 border border-gray-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                    ></textarea>
-                                </div>
-
-                                <div className="relative mt-6 bg-gray-600/40 border border-gray-500 p-5 rounded-xl">
-                                    <label htmlFor="profile-pic" className="mb-3 text-white text-sm font-medium">
-                                        Profile Picture (optional)
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="profile-pic"
-                                        accept="image/*"
-                                        className="w-full mt-3 pl-10 p-2 bg-gray-600/40 border border-gray-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                        onChange={(e) => handleImageChange(e)}
-                                    />
-                                    <p className="text-white/40 text-center mt-3">Max Size File: 5MB</p>
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className="w-full mt-3 bg-gradient-to-r from-pink-600 to-purple-800 text-white font-semibold py-2 rounded-lg text-md hover:bg-purple-600 transition"
-                                >
-                                    Send Message
-                                </button>
-                            </form>
-
-                            <div className="mt-6 overflow-y-auto max-h-[300px]">
-                                {/* Add the list of submitted comments here */}
-                                <div className="flex items-start bg-gray-600 p-3 rounded-lg mb-4">
-                                    <div className="w-12 h-12 bg-gray-500 rounded-full flex items-center justify-center text-white font-semibold mr-4">
-                                        {/* Avatar initials */}
-                                        JD
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <h3 className="text-white text-md font-semibold">John Doe</h3>
-                                        <p className="text-gray-300 text-sm">This is a comment.</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start bg-gray-600 p-3 rounded-lg mb-4">
-                                    <div className="w-12 h-12 bg-gray-500 rounded-full flex items-center justify-center text-white font-semibold mr-4">
-                                        {/* Avatar initials */}
-                                        JD
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <h3 className="text-white text-md font-semibold">John Doe</h3>
-                                        <p className="text-gray-300 text-sm">This is a comment.</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start bg-gray-600 p-3 rounded-lg mb-4">
-                                    <div className="w-12 h-12 bg-gray-500 rounded-full flex items-center justify-center text-white font-semibold mr-4">
-                                        {/* Avatar initials */}
-                                        JD
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <h3 className="text-white text-md font-semibold">John Doe</h3>
-                                        <p className="text-gray-300 text-sm">This is a comment.</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start bg-gray-600 p-3 rounded-lg mb-4">
-                                    <div className="w-12 h-12 bg-gray-500 rounded-full flex items-center justify-center text-white font-semibold mr-4">
-                                        {/* Avatar initials */}
-                                        JD
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <h3 className="text-white text-md font-semibold">John Doe</h3>
-                                        <p className="text-gray-300 text-sm">This is a comment.</p>
-                                    </div>
-                                </div>
-                                
-                                {/* You can continue adding more comments */}
-                            </div>
-                        </div>
-                    </div>
+                    <CommentSection />
                 </div>
 
             </div>
