@@ -178,6 +178,8 @@ const Contact = () => {
                         </div>
                     </div>
 
+                    {/* comment */}
+
                     <div className="w-[55%] h-auto bg-gray-800/40 p-7 rounded-xl">
                         <div className="w-auto h-auto bg-gray-700/40 p-4 rounded-xl">
                             <div className="flex items-center gap-4">

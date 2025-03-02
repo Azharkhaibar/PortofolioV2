@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { BlogCategory } from "../../../lib/interface/blog";
 import { formatDate } from "../../../utils/format";
+import { motion } from 'framer-motion'
+import { ArrowRight } from "lucide-react";
 
 export interface BlogAttributesData {
     id_blog: number;
@@ -90,6 +92,18 @@ const BlogHome: React.FC = () => {
                     ))
                 )}
             </div>
+            <motion.div
+                className="p-2 rounded-full bg-transparent border border-gray-700 mt-6 w-[200px] mx-auto text-center cursor-pointer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+            >
+                <button className="flex items-center pl-6 gap-4 px-2 py-1">
+                    <a href="/blog" className="flex items-center text-white">
+                        View All Blogs
+                        <ArrowRight size={20} className="ml-2" />
+                    </a>
+                </button>
+            </motion.div>
         </div>
     );
 };

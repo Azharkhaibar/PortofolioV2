@@ -22,10 +22,10 @@ const TechStack: React.FC = () => {
     };
     return (
         <div className="w-full h-auto flex items-center px-7">
-            <div className="w-1/2 h-full p-8 pl-20 text-white">
+            <div className="w-1/2 h-full p-6 pl-20 text-white">
                 <SplitText
                     text=" I've used these things to create powerful software that helps people and businesses"
-                    className="text-5xl font-medium leading-[110%] mt-10"
+                    className="text-5xl font-medium mt-10"
                     delay={50}
                     animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
                     animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}

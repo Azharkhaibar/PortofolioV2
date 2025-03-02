@@ -4,6 +4,7 @@ import { BlogCategory } from "../../../lib/interface/blog";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../../utils/format";
+import gridProfiles from "../about_layout/profile_data_representastion";
 
 export interface BlogAttributesData {
     id_blog: number;

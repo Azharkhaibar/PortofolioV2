@@ -2,12 +2,7 @@ import React from "react";
 import { FaDiscord, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
-type SocialIconProps = {
-    icon: JSX.Element;
-    href: string;
-};
-
-const SocialIconMapping: SocialIconProps[] = [
+const socialLinks = [
     { icon: <FaInstagram />, href: "#" },
     { icon: <FaDiscord />, href: "#" },
     { icon: <MdEmail />, href: "#" },
@@ -15,43 +10,55 @@ const SocialIconMapping: SocialIconProps[] = [
     { icon: <FaGithub />, href: "#" }
 ];
 
+const footerLinks = [
+    { label: "Source Code", href: "#" },
+    { label: "Design", href: "#" },
+    { label: "Project", href: "#" },
+    { label: "Statistic", href: "#" }
+];
+
 const Footer: React.FC = () => {
     return (
-        <div className="w-full h-[22vh] mt-3 px-[10%] pt-10">
-            <div className="w-full h-px bg-gray-600 mb-4"></div>
+        <footer className="w-full mt-6 px-10 py-8 text-gray-300">
+            {/* Garis Pemisah */}
+            <div className="w-full h-px bg-gray-700 mb-6"></div>
 
-            <div className="flex justify-center gap-8">
-                {[
-                    { menu: "Source code", href: "#" },
-                    { menu: "Design", href: "#" },
-                    { menu: "Project", href: "#" },
-                    { menu: "Statistic", href: "#" }
-                ].map((footerMenu, index) => (
-                    <div key={index} className="w-[100px] mt-1">
-                        <p className="text-gray-300 text-center">{footerMenu.menu}</p>
-                    </div>
+            {/* Menu Footer */}
+            <nav className="flex justify-center gap-6 mb-4">
+                {footerLinks.map((item, index) => (
+                    <a
+                        key={index}
+                        href={item.href}
+                        className="hover:text-white transition duration-300"
+                    >
+                        {item.label}
+                    </a>
                 ))}
-            </div>
+            </nav>
 
-            <div className="mt-2">
-                <h2 className="text-md text-white text-center">Reach me out</h2>
-                <div className="flex mt-2 gap-4 justify-center items-center">
-                    {SocialIconMapping.map((item, index) => (
-                        <div key={index} className="text-center">
-                            <a
-                                href={item.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-inherit text-xl text-white"
-                            >
-                                {item.icon}
-                            </a>
-                        </div>
+            {/* Social Media */}
+            <div className="text-center mb-4">
+                <h2 className="text-white text-lg mb-2">Reach me out</h2>
+                <div className="flex justify-center gap-5">
+                    {socialLinks.map((item, index) => (
+                        <a
+                            key={index}
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-2xl text-gray-400 hover:text-white transition duration-300"
+                        >
+                            {item.icon}
+                        </a>
                     ))}
                 </div>
             </div>
-            <p className="text-center mt-2 text-gray-300">© Azhar Khaibar 2024 • Got any feedback?</p>
-        </div>
+
+            {/* Copyright */}
+            <p className="text-center text-sm text-gray-400">
+                © Azhar Khaibar 2024 • Got any feedback?
+            </p>
+        </footer>
     );
 };
 

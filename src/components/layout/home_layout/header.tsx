@@ -17,7 +17,7 @@ const Header: React.FC = () => {
             <Navbar />
             <div className="w-full max-w-3xl mx-auto">
                 <h1 className="text-6xl mb-6 leading-[90%] text-white font-bold">
-                    <SplitText text="Hi," className="text-4xl text-white" delay={50} />
+                    <SplitText text="Hi," className="gradient-text text-4xl " delay={50} />
                     <SplitText text="I'm " className="text-4xl text-white font-bold mb-4" delay={30} />
                     <br />
                     <SplitText

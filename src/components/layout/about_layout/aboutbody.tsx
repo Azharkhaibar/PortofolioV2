@@ -3,12 +3,11 @@ import { useEffect, useState } from 'react';
 import {Code, BadgeCheck, Briefcase } from "lucide-react";
 import fotoGue from '../../../assets/public/img/about/Azhagantengjdisds.jpg'
 import '../../design/style.css'
-import fotoDummy from '../../../assets/public/img/about.jpg'
+import GridProfiles from './profile_data_representastion';
 import { motion } from 'framer-motion'
 import BlurText from '../../../animation/BlurText/BlurText';
 import SplitText from '../../../animation/SplitText/SplitText';
 import GitHubCalendar from 'react-github-calendar';
-import { FaBriefcase, FaGraduationCap } from 'react-icons/fa';
 import { education, experiences } from '../../../frontend/data/profile';
 interface Project {
     id_portofolio: number;
@@ -116,7 +115,7 @@ const AboutBody: React.FC = () => {
                         direction="bottom"
                     />
 
-                    <img src={fotoDummy} alt='fotodummy' className='w-full mt-10 h-96 object-cover' />
+                   <GridProfiles />
                     <motion.div
                         className="flex items-center gap-4 mt-4"
                         initial={{ opacity: 0, y: 30 }}
@@ -200,21 +199,6 @@ const AboutBody: React.FC = () => {
                             ))}
                         </div>
                     </div>
-
-
-
-                    <div className='mt-10'>
-                        <h2 className="text-2xl font-semibold text-white">GitHub Contributions</h2>
-                        <GitHubCalendar
-                            username="Azharkhaibar" // Ganti dengan username GitHub kamu
-                            colorScheme="dark"
-                            blockSize={12.5}
-                            blockMargin={4}
-                            fontSize={16}
-                        />
-
-                    </div>
-
                     {/* tolong buatkan github contribution graph milik saya Azharkhaibar */}
 
                     <div className="flex items-center text-white mt-10 gap-5">

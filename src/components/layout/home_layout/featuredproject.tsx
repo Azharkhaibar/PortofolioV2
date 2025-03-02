@@ -3,9 +3,10 @@ import { ProjectFlex } from "../../../frontend/data/featuredproject";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { ArrowRight } from "lucide-react";
 import { FaArrowRight } from "react-icons/fa6";
-import { motion } from "framer-motion";
-import ShinyText from "../../../animation/ShinyText/ShinyText";
+import { easeOut, motion } from "framer-motion";
+import SplitText from "../../../animation/SplitText/SplitText";
 
 const FeaturedProject: React.FC = () => {
     const cardVariants = {
@@ -45,8 +46,8 @@ const FeaturedProject: React.FC = () => {
 
     return (
         <div className="w-full h-auto text-white mt-10 px-4 sm:px-8 lg:px-[8%]">
-            <ShinyText text="Featured Project" disabled={false} speed={3} className="shiny-text text-6xl pl-[33%] font-medium text-center" />
-            <p className="text-center mt-3 text-lg">Check out all of my Projects</p>
+            <SplitText text="Featured Project" delay={20} easing={easeOut} className="text-6xl pl-[33%] font-medium text-center" />
+            <motion.p className="text-center mt-3 text-lg" initial="hidden" whileInView="visible" variants={cardVariants}>Check out all of my Projects</motion.p>
 
             <div className="h-auto w-full mt-12 text-white">
                 <Slider {...ProjectSliderSettings}>
@@ -60,7 +61,7 @@ const FeaturedProject: React.FC = () => {
                             viewport={{ once: true, amount: 0.2 }}
                             custom={index}
                         >
-                            <div className="w-[300px] sm:w-[350px] md:w-[300px] mx-auto h-auto p-6 rounded-lg shadow-md border border-gray-700 bg-gray-900">
+                            <div className="w-[300px] sm:w-[350px] md:w-[300px] mx-auto h-auto p-6 rounded-lg shadow-md border border-gray-700 bg-gray-900/40">
                                 <h3 className="text-2xl mb-3 font-semibold text-white">{projectAccess.nameproject}</h3>
                                 <p className="mb-4 text-gray-300">{projectAccess.descriptionproject}</p>
 
@@ -88,13 +89,14 @@ const FeaturedProject: React.FC = () => {
                 </Slider>
 
                 <motion.div
-                    className="p-3 rounded-lg bg-transparent border border-gray-700 mt-6 w-[200px] mx-auto text-center cursor-pointer"
+                    className="p-3 rounded-full bg-transparent border border-gray-700 mt-6 w-[200px] mx-auto text-center cursor-pointer"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                 >
-                    <button>
-                        <a href="/portofolio">
+                    <button className="flex items-center pl-4 gap-4 px-2 py-1">
+                        <a href="/portofolio" className="flex items-center text-white">
                             See All Projects
+                            <ArrowRight size={20} className="ml-2" />
                         </a>
                     </button>
                 </motion.div>
