@@ -1,8 +1,9 @@
 import Navbar from "../navbar";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { BlogCategory } from "../../../lib/interface/blog";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { formatDate } from "../../../utils/format";
 
 export interface BlogAttributesData {
     id_blog: number;
@@ -11,7 +12,7 @@ export interface BlogAttributesData {
     deskripsi_blog: string;
     detail_deskripsi_blog: string;
     kategori_blog: BlogCategory;
-    tags: string[] | string;
+    tags: string;
     author: string;
     publishedAt: string;
 }
@@ -27,11 +28,16 @@ const BlogPage = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/blogs");
-                setBlogs(response.data.map((blog: BlogAttributesData) => ({
+                const response = await fetch("http://localhost:5000/api/blogs");
+                if (!response.ok) throw new Error("Gagal mengambil data blog");
+
+                const data = await response.json();
+                const formattedData = data.map((blog: any) => ({
                     ...blog,
-                    tags: typeof blog.tags === "string" ? blog.tags.split(",") : blog.tags
-                })));
+                    tags: typeof blog.tags === "string" ? JSON.parse(blog.tags).join(", ") : blog.tags.join(", ")
+                }));
+
+                setBlogs(formattedData);
             } catch (err) {
                 console.error("Error fetching blogs:", err);
                 setError("Gagal mengambil data blog");
@@ -100,21 +106,37 @@ const BlogPage = () => {
                                         whileHover={{ scale: 1.05 }}
                                         className="w-full mx-auto rounded-xl shadow-lg overflow-hidden"
                                     >
-                                        <img
-                                            src={blog.blogIMG ? `http://localhost:5000/uploads/${blog.blogIMG}` : "https://via.placeholder.com/400"}
-                                            alt={blog.headline_blog}
-                                            className="w-full h-72 object-cover rounded-lg"
-                                        />
-                                        <div className="flex flex-col mt-4">
-                                            <div className="text-gray-400 text-xs">
-                                                <span className="font-semibold text-white">{blog.author}</span> - {blog.publishedAt}
+                                        <Link to={`/blog/${blog.id_blog}`}>
+                                            <img
+                                                src={blog.blogIMG ? `http://localhost:5000/uploads/${blog.blogIMG}` : "https://via.placeholder.com/400"}
+                                                alt={blog.headline_blog}
+                                                className="w-full h-72 object-cover rounded-lg"
+                                            />
+                                            <div className="flex flex-col mt-4">
+                                                <div className="text-gray-400 text-xs">
+                                                    <span className="font-semibold text-white">{blog.author}</span> - {formatDate(blog.publishedAt)}
+                                                </div>
+                                                <h3 className="text-lg mt-2 font-semibold text-white">{blog.headline_blog}</h3>
+                                                <p className="text-sm text-gray-300 mt-2">{blog.deskripsi_blog}</p>
+                                                <div className="flex flex-wrap gap-2 mt-2">
+                                                    {blog.tags && typeof blog.tags === "string"
+                                                        ? blog.tags.split(",").map((tag, index) => (
+                                                            <span key={index} className="bg-gray-700 px-3 py-1 rounded-full text-sm text-white">
+                                                                #{tag.trim()}
+                                                            </span>
+                                                        ))
+                                                        : Array.isArray(blog.tags) && blog.tags.length > 0
+                                                            ? blog.tags.map((tag, index) => (
+                                                                <span key={index} className="bg-gray-700 px-3 py-1 rounded-full text-sm text-white">
+                                                                    #{tag.trim()}
+                                                                </span>
+                                                            ))
+                                                            : <span className="text-gray-400">No Tags</span>
+                                                    }
+                                                </div>
+
                                             </div>
-                                            <h3 className="text-lg mt-2 font-semibold text-white">{blog.headline_blog}</h3>
-                                            <p className="text-sm text-gray-300 mt-2">{blog.deskripsi_blog}</p>
-                                            <p className="text-white">
-                                                {blog.tags && blog.tags.length > 0 ? (blog.tags as string[]).join(", ") : "No Tags"}
-                                            </p>
-                                        </div>
+                                        </Link>
                                     </motion.div>
                                 ))}
                             </div>

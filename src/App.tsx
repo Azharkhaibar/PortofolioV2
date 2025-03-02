@@ -8,6 +8,7 @@ import Contact from './frontend/pages/contact';
 import Portofolio from './frontend/pages/portofolio';
 import ProjectDetail from './components/layout/portofolio_layout/projectDetail';
 import Blog from './frontend/pages/blog';
+import BlogDetail from './components/layout/blog_layout/blog_detail';
 const App: React.FC = () => {
   return (
     <>
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path='/blog' element={<Blog />} />
           <Route path="/portofolio" element={<Portofolio />} />
           <Route path='/portofolio/:id' element={<ProjectDetail />} />
+          <Route path='/blog/:id' element={<BlogDetail />} />
         </Routes>
       </div>
     </>

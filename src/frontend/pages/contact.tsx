@@ -2,7 +2,7 @@ import ContactLayout from "../../components/layout/contact_layout/contact";
 import Footer from "../../components/layout/footer";
 const Contact = () => {
     return(
-        <div className="bg-[#0a0b10]">
+        <div className="">
             <ContactLayout />
             <Footer />
         </div>
