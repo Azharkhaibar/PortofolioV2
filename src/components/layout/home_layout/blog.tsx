@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { BlogCategory } from "../../../lib/interface/blog";
 import { formatDate } from "../../../utils/format";
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export interface BlogAttributesData {
@@ -45,24 +45,27 @@ const BlogHome: React.FC = () => {
 
     return (
         <div className="mt-10 px-[130px]">
-            {/* Header */}
             <div className="text-white text-left">
                 <h2 className="text-5xl font-semibold">My Writing</h2>
                 <p className="mt-3 text-lg text-gray-300 w-[40%]">
                     Along with coding, I also like to write about life and technology. Here are some of my recent posts.
                 </p>
             </div>
-
-            {/* Blog List */}
-            <div className="w-full mt-10 flex flex-wrap justify-center ">
+            <div className="w-full mt-10 flex flex-wrap justify-center">
                 {loading ? (
                     <p className="text-white">Loading...</p>
                 ) : error ? (
                     <p className="text-red-500">{error}</p>
                 ) : (
-                    blogsHome.map((homeBlogs) => (
-                        <div key={homeBlogs.id_blog} className="w-full border border-b-white/20 flex gap-6 mb-8 py-7">
-                            {/* Gambar */}
+                    blogsHome.map((homeBlogs, index) => (
+                        <motion.div
+                            key={homeBlogs.id_blog}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }} 
+                            transition={{ duration: 0.6, delay: index * 0.2 }}
+                            className="w-full border border-b-white/20 flex gap-6 mb-8 py-7"
+                        >
                             <div className="">
                                 <img
                                     src={
@@ -75,12 +78,9 @@ const BlogHome: React.FC = () => {
                                 />
                             </div>
 
-                            {/* Konten */}
                             <div className="w-full text-white">
                                 <h2 className="text-2xl font-bold">{homeBlogs.headline_blog}</h2>
                                 <p className="text-gray-400 mt-2">{homeBlogs.deskripsi_blog}</p>
-
-                                {/* Informasi Tambahan */}
                                 <div className="mt-3 flex justify-between text-sm text-gray-500">
                                     <p>{formatDate(homeBlogs.publishedAt)}</p>
                                     <Link to={`/blog/${homeBlogs.id_blog}`} className="text-blue-400 hover:text-blue-300">
@@ -88,10 +88,12 @@ const BlogHome: React.FC = () => {
                                     </Link>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))
                 )}
             </div>
+
+            {/* Tombol View All */}
             <motion.div
                 className="p-2 rounded-full bg-transparent border border-gray-700 mt-6 w-[200px] mx-auto text-center cursor-pointer"
                 whileHover={{ scale: 1.1 }}

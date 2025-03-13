@@ -151,22 +151,25 @@ const AboutBody: React.FC = () => {
 
                     <div className="w-full max-w-4xl mx-auto py-20 px-6 text-white">
                         <h2 className="text-4xl font-bold text-center mb-16">My Journey</h2>
+
                         <div className="relative border-l-4 border-gray-800/60 pl-2 space-y-16">
+                            {/* Experience Section */}
                             {experiences.map((exp, index) => (
                                 <motion.div
                                     key={index}
-                                    initial={{ opacity: 0, x: -50 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.5, delay: index * 0.3 }}
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
+                                    viewport={{ once: true }}
                                     className="relative pl-8"
                                 >
                                     <div className="absolute -left-7 top-0 w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
                                         <img src={exp.logo} alt={exp.company} className="w-full h-full object-cover" />
                                     </div>
                                     <div className="flex flex-col">
-                                        <div className='flex items-center'>
+                                        <div className="flex items-center">
                                             <h3 className="text-xl font-semibold">{exp.company}</h3>
-                                            <h3 className="text-xl font-semibold italic">{exp.modelWork}</h3>
+                                            <h3 className="text-xl font-semibold italic ml-2">{exp.modelWork}</h3>
                                         </div>
                                         <p className="text-gray-400">{exp.date}</p>
                                         <p className="text-lg font-medium">{exp.role}</p>
@@ -179,12 +182,14 @@ const AboutBody: React.FC = () => {
                                     </div>
                                 </motion.div>
                             ))}
+
                             {education.map((edu, index) => (
                                 <motion.div
                                     key={index}
-                                    initial={{ opacity: 0, x: -50 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.5, delay: index * 0.3 }}
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
+                                    viewport={{ once: true }}
                                     className="relative pl-8"
                                 >
                                     <div className="absolute -left-7 top-0 w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
@@ -198,30 +203,49 @@ const AboutBody: React.FC = () => {
                                 </motion.div>
                             ))}
                         </div>
-                    </div>
-                    {/* tolong buatkan github contribution graph milik saya Azharkhaibar */}
 
-                    <div className="flex items-center text-white mt-10 gap-5">
-                        {stats.map((stat, index) => (
+                        <div className="mt-16">
+                            <h2 className="text-3xl font-bold text-center mb-6">GitHub Contributions</h2>
                             <motion.div
-                                key={`${stat.title}-${stat.value}`}
-                                className="w-[300px] h-auto p-5 rounded-lg bg-gray-800/50 border border-gray-700/50"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 1, ease: "easeOut", delay: index * 0.3 }} // Stagger the animation with increasing delay
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                viewport={{ once: true }}
+                                className="p-6 rounded-lg bg-gray-800/50 border border-gray-700/50"
                             >
-                                <div className="flex items-center justify-between">
-                                    <div className="w-[50px] aspect-square flex items-center justify-center rounded-full bg-gray-600">
-                                        {stat.icon}
-                                    </div>
-                                    <h2 className="text-5xl font-bold">{stat.value}</h2>
-                                </div>
-                                <div className="flex flex-col">
-                                    <h3 className="text-2xl mt-4 font-semibold">{stat.title}</h3>
-                                    <p className="mt-1 opacity-30">{stat.desc}</p>
-                                </div>
+                                <GitHubCalendar
+                                    username="Azharkhaibar"
+                                    colorScheme="light"
+                                    blockSize={6.5}
+                                    blockMargin={4}
+                                    fontSize={10}
+                                />
                             </motion.div>
-                        ))}
+                        </div>
+
+                        <div className="flex items-center text-white mt-10 gap-5">
+                            {stats.map((stat, index) => (
+                                <motion.div
+                                    key={`${stat.title}-${stat.value}`}
+                                    className="w-[300px] h-auto p-5 rounded-lg bg-gray-800/50 border border-gray-700/50"
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1, ease: "easeOut", delay: index * 0.3 }}
+                                    viewport={{ once: true }}
+                                >
+                                    <div className="flex items-center justify-between">
+                                        <div className="w-[50px] aspect-square flex items-center justify-center rounded-full bg-gray-600">
+                                            {stat.icon}
+                                        </div>
+                                        <h2 className="text-5xl font-bold">{stat.value}</h2>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <h3 className="text-2xl mt-4 font-semibold">{stat.title}</h3>
+                                        <p className="mt-1 opacity-30">{stat.desc}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="p-10 flex items-center gap-36 justify-center overflow-hidden mt-10">

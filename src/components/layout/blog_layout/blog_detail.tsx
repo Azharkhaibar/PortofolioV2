@@ -55,7 +55,7 @@ const BlogDetail = () => {
     return (
         <div className="">
             <Navbar />
-            <div className="max-w-4xl mx-auto mt-20 text-white">
+            <div className="max-w-4xl mx-auto mt-30 text-white">
                 {loading ? (
                     <p>Loading...</p>
                 ) : error ? (

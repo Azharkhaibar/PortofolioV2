@@ -141,8 +141,6 @@ const BlogPage = () => {
                                     </motion.div>
                                 ))}
                             </div>
-
-                            {/* Pagination Controls */}
                             <div className="flex justify-center mt-8 space-x-2">
                                 <button
                                     onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}

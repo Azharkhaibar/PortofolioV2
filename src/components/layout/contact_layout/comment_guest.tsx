@@ -15,7 +15,6 @@ export default function CommentSection() {
     const [profilePic, setProfilePic] = useState(null);
 
     useEffect(() => {
-        // Load comments from Local Storage on mount
         const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
         setComments(savedComments);
     }, []);
@@ -55,11 +54,11 @@ export default function CommentSection() {
                     <p className="text-2xl text-white font-semibold">({comments.length})</p>
                 </div>
                 <div className="w-full border-t border-gray-600 mt-4"></div>
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <form onSubmit={handleSubmit} className="flex flex-col mt-4 gap-4">
                     <input
                         type="text"
                         placeholder="Enter your name"
-                        className="w-full p-3 mt-3 bg-gray-600/40 border border-gray-500 rounded-lg text-white focus:ring-2 focus:ring-purple-500"
+                        className="w-full p-4 mb-4 mt-3 bg-gray-600/40 border border-gray-500 rounded-lg text-white focus:ring-2 focus:ring-purple-500"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
@@ -75,7 +74,7 @@ export default function CommentSection() {
                         <input
                             type="file"
                             accept="image/*"
-                            className="w-full mt-3 p-2 bg-gray-600/40 border border-gray-500 rounded-lg text-white focus:ring-2 focus:ring-purple-500"
+                            className="w-full mt-6 p-2 bg-gray-600/40 border border-gray-500 rounded-lg text-white focus:ring-2 focus:ring-purple-500"
                             onChange={handleImageChange}
                         />
                         <p className="text-white/40 text-center mt-3">Max Size File: 5MB</p>
@@ -87,9 +86,9 @@ export default function CommentSection() {
                         Send Message
                     </button>
                 </form>
-                <div className="mt-6 overflow-y-auto max-h-[300px]">
+                <div className="mt-6 overflow-y-auto max-h-[330px]">
                     {comments.map((comment, index) => (
-                        <div key={index} className="flex items-start bg-gray-600/20 border border-gray-400/10 p-3 rounded-lg mb-4 relative">
+                        <div key={index} className="flex  items-start bg-gray-600/20 border border-gray-400/10 p-3 rounded-lg mb-6 relative">
                             {comment.profilePic ? (
                                 <img src={comment.profilePic} alt="Profile" className="w-12 h-12 rounded-full mr-4" />
                             ) : (
