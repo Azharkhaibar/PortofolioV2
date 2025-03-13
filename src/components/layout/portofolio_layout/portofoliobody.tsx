@@ -88,7 +88,7 @@ const PortofolioBody: React.FC<PortofolioBodyProps> = ({ activeSection, portofol
     return (
         <div>
             <Navbar />
-            <div className="text-center pt-44">
+            <div className="text-center pt-44 px-4 md:px-0">
                 <AnimatedContent
                     distance={30}
                     direction="vertical"
@@ -99,7 +99,7 @@ const PortofolioBody: React.FC<PortofolioBodyProps> = ({ activeSection, portofol
                     scale={1.1}
                     threshold={0.2}
                 >
-                    <h2 className="text-7xl font-bold text-purple-600 mb-4">Portofolio Showcase</h2>
+                    <h2 className="text-5xl md:text-7xl font-bold text-purple-600 mb-4">Portofolio Showcase</h2>
                 </AnimatedContent>
                 <SplitText
                     text={`Explore my journey through projects, certifications, and technical expertise.`}
