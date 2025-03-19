@@ -9,3 +9,10 @@ fitur baru
 - text panjang di about ganti dengan timeline pengalaman
 - berikan pict sertif hover di home section sertifikt 
 - tambah fitur filter berdasarkan tag di blog
+
+19/03/2025
+- PAGE EXPERIENCE 
+- LIB INTERFACE EXPERIENCE DAN EDUCATION
+- MODEL EXPERIENCE & MODEL EDUCATION
+- BUAT CONTROLLER EXPERIENCE & EDUCATION
+- JOURNEYPAGE DI DASHBOARD & DAN FETCHING

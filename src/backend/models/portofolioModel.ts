@@ -13,7 +13,6 @@ export interface PortofolioAttributesData {
 }
 
 interface PortofolioCreationAttributes extends Optional<PortofolioAttributesData, "id_portofolio"> {}
-
 class Portofolio extends Model<PortofolioAttributesData, PortofolioCreationAttributes> implements PortofolioAttributesData {
   public id_portofolio!: number;
   public nama_project!: string;

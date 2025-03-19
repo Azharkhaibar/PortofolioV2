@@ -1,7 +1,7 @@
 // src/dashboard/components/Sidebar.tsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, Users, Settings, Code2, NotebookPen } from 'lucide-react';
+import { Home, Users, Settings, Code2, NotebookPen, Briefcase } from 'lucide-react';
 
 const Sidebar: React.FC = () => {
     return (
@@ -24,6 +24,12 @@ const Sidebar: React.FC = () => {
                             <NotebookPen size={20} className="inline mr-2" /> Blogs
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/dashboard/experience" className={({ isActive }) => isActive ? "text-blue-400" : ""}>
+                            <Briefcase size={20} className="inline mr-2" /> Experience
+                        </NavLink>
+                    </li>
+
                     <li>
                         <NavLink to="/dashboard/users" className={({ isActive }) => isActive ? "text-blue-400" : ""}>
                             <Users size={20} className="inline mr-2" /> Users

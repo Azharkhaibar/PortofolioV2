@@ -7,6 +7,8 @@ import contactRoute from "./routes/contactRoute";
 import contactHomeRoute from './routes/contactHomeRoute'
 import blogs from './routes/blogRoute'
 import cors from 'cors';
+import JourneyRoutes from "./routes/JourneyRoute";
+
 
 dotenv.config();
 
@@ -21,7 +23,8 @@ app.use("/api/contact", contactRoute());
 app.use("/api/portofolio", portfolioRoutes);
 app.use("/api/contacthome", contactHomeRoute());
 app.use("/api/blogs", blogs);
-
+// ada endpo
+app.use("/api/journey", JourneyRoutes);
 sequelize.sync({ force: false }).then(() => {
   console.log("Database Synchronized");
   app.listen(PORT, () => {

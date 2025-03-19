@@ -9,6 +9,7 @@ import BlurText from '../../../animation/BlurText/BlurText';
 import SplitText from '../../../animation/SplitText/SplitText';
 import GitHubCalendar from 'react-github-calendar';
 import { education, experiences } from '../../../frontend/data/profile';
+import EducationExperience from '../../ui/ExperienceItem';
 interface Project {
     id_portofolio: number;
     nama_project: string;
@@ -150,77 +151,10 @@ const AboutBody: React.FC = () => {
                     />
 
                     <div className="w-full max-w-4xl mx-auto py-20 px-6 text-white">
-                        <h2 className="text-4xl font-bold text-center mb-16">My Journey</h2>
-
-                        <div className="relative border-l-4 border-gray-800/60 pl-2 space-y-16">
-                            {/* Experience Section */}
-                            {experiences.map((exp, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 50 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                                    viewport={{ once: true }}
-                                    className="relative pl-8"
-                                >
-                                    <div className="absolute -left-7 top-0 w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
-                                        <img src={exp.logo} alt={exp.company} className="w-full h-full object-cover" />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <div className="flex items-center">
-                                            <h3 className="text-xl font-semibold">{exp.company}</h3>
-                                            <h3 className="text-xl font-semibold italic ml-2">{exp.modelWork}</h3>
-                                        </div>
-                                        <p className="text-gray-400">{exp.date}</p>
-                                        <p className="text-lg font-medium">{exp.role}</p>
-                                        <p className="text-gray-300 mt-2">Tech Used: {exp.tech.join(', ')}</p>
-                                        <ul className="text-gray-400 list-disc list-outside space-y-1 pl-5">
-                                            {exp.tasks.map((task, i) => (
-                                                <li key={i}>{task}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </motion.div>
-                            ))}
-
-                            {education.map((edu, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 50 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                                    viewport={{ once: true }}
-                                    className="relative pl-8"
-                                >
-                                    <div className="absolute -left-7 top-0 w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
-                                        <img src={edu.logo} alt={edu.school} className="w-full h-full object-contain" />
-                                    </div>
-                                    <div className="flex flex-col gap-1">
-                                        <h3 className="text-xl font-semibold">{edu.school}</h3>
-                                        <p className="text-gray-400">{edu.date}</p>
-                                        <p className="mt-1 text-lg font-medium">{edu.major}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
+                        <EducationExperience education={education} />
 
                         <div className="mt-16">
-                            <h2 className="text-3xl font-bold text-center mb-6">GitHub Contributions</h2>
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, ease: "easeOut" }}
-                                viewport={{ once: true }}
-                                className="p-6 rounded-lg bg-gray-800/50 border border-gray-700/50"
-                            >
-                                <GitHubCalendar
-                                    username="Azharkhaibar"
-                                    colorScheme="light"
-                                    blockSize={6.5}
-                                    blockMargin={4}
-                                    fontSize={10}
-                                />
-                            </motion.div>
+                            
                         </div>
 
                         <div className="flex items-center text-white mt-10 gap-5">

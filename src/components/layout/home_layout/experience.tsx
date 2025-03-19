@@ -95,7 +95,7 @@ const Pendidikan: React.FC = () => {
                 </div>
             </div>
             <div className="flex justify-center items-center mt-6">
-                <button className="flex items-center bg-gray-700 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition">
+                <button className="flex items-center bg-transparent text-white py-2 px-4 border border-white/30 rounded-full hover:bg-gray-600 transition">
                     <span className="mr-2">See more</span>
                     <FaArrowRight />
                 </button>

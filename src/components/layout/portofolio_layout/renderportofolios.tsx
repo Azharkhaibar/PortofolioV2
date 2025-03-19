@@ -23,11 +23,8 @@ const RenderPortofolios = ({ portofolios, loading }) => {
 
                 return (
                     <motion.div
-                        key={project.id_portofolio}
-                        className=" rounded-xl bg-gray-800/40 border border-gray-800/50 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.2 }}
+                        key={project.id_portofolio} className=" rounded-xl bg-gray-800/40 border border-gray-800/50 shadow-lg hover:shadow-xl transition-shadow duration-300" initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.2 }}
                     >
                         <img
                             src={imageUrl}
