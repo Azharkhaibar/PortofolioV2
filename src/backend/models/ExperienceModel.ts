@@ -4,8 +4,8 @@ import sequelize from "../config/database";
 export interface JourneyExperienceAttributes {
   id_experience: number;
   nama_instansi: string;
-  periode_mulai: string; // ✅ Ganti dari Date ke string (ex: "Jul 2022")
-  periode_selesai: string; // ✅ Ganti dari Date ke string (ex: "Aug 2022")
+  periode_mulai: string; 
+  periode_selesai: string; 
   posisi: string;
   jabatan: string;
   img_logo?: string;

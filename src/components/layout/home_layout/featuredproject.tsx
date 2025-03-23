@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { FaArrowRight } from "react-icons/fa6";
 import { easeOut, motion } from "framer-motion";
 import SplitText from "../../../animation/SplitText/SplitText";
+import { Link } from "react-router-dom";
 
 const FeaturedProject: React.FC = () => {
     const cardVariants = {
@@ -47,13 +48,13 @@ const FeaturedProject: React.FC = () => {
 
     return (
         <div className="w-full h-auto text-white mt-10 px-4 sm:px-8 lg:px-[8%]">
-            <SplitText text="Featured Project" delay={20} easing={easeOut} className="text-4xl sm:text-6xl text-center font-bold pl-10 sm:pl-10 lg:pl-0 font-medium" />
+            <SplitText text="Featured Project" delay={20} easing={easeOut} className="text-4xl sm:text-6xl text-center pl-10 sm:pl-10 lg:pl-[32%] font-medium" />
             <motion.p className="text-center mt-3 text-base sm:text-lg" initial="hidden" whileInView="visible" variants={cardVariants}>
                 Check out all of my Projects
             </motion.p>
 
             <div className="h-auto w-full mt-12 text-white">
-                <div className="relative w-full max-w-[1200px] mx-auto">
+                <div className="relative w-full max-w-[1300px] mx-auto">
                     <Slider {...ProjectSliderSettings} className="w-full">
                         {ProjectFlex.map((projectAccess, index) => (
                             <motion.div
@@ -84,7 +85,7 @@ const FeaturedProject: React.FC = () => {
                                     />
 
                                     <div className="flex items-center cursor-pointer mt-2">
-                                        <p className="text-gray-400 font-semibold mr-1">See more</p>
+                                        <Link to="/portofolio" className="text-gray-400 font-semibold mr-1">See more</Link>
                                         <FaArrowRight className="text-gray-400" />
                                     </div>
                                 </div>

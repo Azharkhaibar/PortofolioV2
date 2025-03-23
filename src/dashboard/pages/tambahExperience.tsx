@@ -12,8 +12,8 @@ const TambahExperience = () => {
     const formik = useFormik({
         initialValues: {
             nama_instansi: "",
-            periode_mulai: "", // Ganti dari 'tanggal'
-            periode_selesai: "", // Tambahkan ini
+            periode_mulai: "", 
+            periode_selesai: "",
             posisi: "",
             jabatan: "",
             img_logo: null as File | null,

@@ -106,6 +106,40 @@ export const createExperience: RequestHandler = async (req: Request, res: Respon
     }
 };
 
+export const updateExperience=async(req:Request, res:Response, next:NextFunction):Promise<void>=>{
+    try {
+      const { id } = req.params;
+      const { nama_instansi, periode_mulai, periode_selesai, posisi, jabatan, img_logo, techStack, task } = req.body;
+      const UpdateExperience = await ExperienceDataModel.findByPk(id);
+      if (!updateExperience) {
+        res.status(404).json({
+          error: "data kgk ketemu coy",
+        });
+        return;
+      }
+      // cek apakah data yg diupdate itu ada kalau tidak ada maka akan mengembalikan pesan error
+      if (UpdateExperience) {
+        UpdateExperience.nama_instansi = nama_instansi;
+        UpdateExperience.periode_mulai = periode_mulai;
+        UpdateExperience.periode_selesai = periode_selesai;
+        UpdateExperience.posisi = posisi;
+        UpdateExperience.jabatan = jabatan;
+        UpdateExperience.img_logo = img_logo;
+        UpdateExperience.techStack = techStack;
+        UpdateExperience.task = task;
+      }
+      await UpdateExperience?.save();
+      res.status(200).json({
+        message: `data berhasil diubah : ${UpdateExperience}`,
+      });
+    } catch(err: any) {
+        console.error(`error updating experience: ${err.message}`);
+        ;
+        res.status(500).json({ error: `error update experience: ${err.message}`})
+        
+    }
+}
+
 
 export const deleteExperience = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {

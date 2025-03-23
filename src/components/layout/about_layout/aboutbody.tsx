@@ -1,14 +1,13 @@
 import { techStackImages } from '../../constant/const';
 import { useEffect, useState } from 'react';
 import {Code, BadgeCheck, Briefcase } from "lucide-react";
-import fotoGue from '../../../assets/public/img/about/Azhagantengjdisds.jpg'
+import fotoGue from '../../../assets/public/img/about/siganteng.jpg'
 import '../../design/style.css'
 import GridProfiles from './profile_data_representastion';
 import { motion } from 'framer-motion'
 import BlurText from '../../../animation/BlurText/BlurText';
 import SplitText from '../../../animation/SplitText/SplitText';
-import GitHubCalendar from 'react-github-calendar';
-import { education, experiences } from '../../../frontend/data/profile';
+import { education} from '../../../frontend/data/profile';
 import EducationExperience from '../../ui/ExperienceItem';
 interface Project {
     id_portofolio: number;
@@ -86,7 +85,7 @@ const AboutBody: React.FC = () => {
         <div className="px-[2.5%]">
             <div className="w-full h-auto flex pt-28">
                 <div className="w-[30%] h-[300px] sticky top-20">
-                    <img src={fotoGue} alt="Azhar's Photo" className="w-[370px] rounded-xl h-[370px] object-contain mx-auto rounded-[35px]" />
+                    <img src={fotoGue} alt="Azhar's Photo" className="w-[280px] rounded-xl h-auto object-contain mx-auto" />
                     <h3 className="text-center text-[14px] mt-3 text-gray-500">Fullstack Developer & UI/UX Designer</h3>
                 </div>
                 <div className="w-[70%] h-full pr-[8%] text-white">
