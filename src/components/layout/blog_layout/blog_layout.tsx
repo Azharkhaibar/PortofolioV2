@@ -25,6 +25,7 @@ const BlogPage = () => {
     const [error, setError] = useState<string | null>(null);
     const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
+    const [tagsSelectedOption, setTagsSelectedOption]= useState<string|null>(null);
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -37,7 +38,6 @@ const BlogPage = () => {
                     ...blog,
                     tags: typeof blog.tags === "string" ? JSON.parse(blog.tags).join(", ") : blog.tags.join(", ")
                 }));
-
                 setBlogs(formattedData);
             } catch (err) {
                 console.error("Error fetching blogs:", err);
@@ -49,17 +49,21 @@ const BlogPage = () => {
 
         fetchBlogs();
     }, []);
+    useEffect(() => {
+        setCurrentPage(1);
 
-    const filteredBlogs = selectedCategory
-        ? blogs.filter(blog => blog.kategori_blog === selectedCategory)
-        : blogs;
+    }, [selectedCategory, tagsSelectedOption])
 
-    const totalPages = Math.ceil(filteredBlogs.length / itemsPerPage);
-    const displayedBlogs = filteredBlogs.slice(
+    const filteredBlogsByCategory = selectedCategory ? blogs.filter(blog => blog.kategori_blog === selectedCategory) : blogs;
+    const selectExistTags = [...new Set(blogs.flatMap(blog => blog.tags.split(", ").map(tag => tag.trim())))];
+    const filteredBlogsByTags = tagsSelectedOption ? filteredBlogsByCategory.filter(blog =>
+            blog.tags.split(", ").map(tag => tag.trim()).includes(tagsSelectedOption)) : filteredBlogsByCategory;
+    const totalPages = Math.ceil(filteredBlogsByTags.length / itemsPerPage);
+    const displayedBlogs = filteredBlogsByTags.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
-
+    
     return (
         <div>
             <Navbar />
@@ -74,7 +78,6 @@ const BlogPage = () => {
 
                 {!loading && !error && (
                     <div className="w-full h-auto mt-16 flex justify-center">
-                        {/* Sidebar Kategori */}
                         <div className="w-2/12">
                             <ul className="w-48 rounded-xl border border-gray-700/40 bg-gray-800/40 backdrop-blur-xl p-8 space-y-4 text-white mx-auto">
                                 <li
@@ -85,17 +88,25 @@ const BlogPage = () => {
                                 </li>
                                 {[...new Set(blogs.map(blog => blog.kategori_blog))].map((category) => (
                                     <li
-                                        key={category}
-                                        className={`hover:text-gray-300 cursor-pointer ${selectedCategory === category ? "text-gray-300" : ""}`}
+                                        key={category} className={`hover:text-gray-300 cursor-pointer ${selectedCategory === category ? "text-gray-300" : ""}`}
                                         onClick={() => setSelectedCategory(category as BlogCategory)}
                                     >
                                         {category}
                                     </li>
                                 ))}
                             </ul>
-                        </div>
 
-                        {/* Daftar Blog */}
+                            <div className="w-48 border border-gray-700/40 bg-gray-800/10 mx-auto mt-10 rounded-xl flex-wrap p-4">
+                                    <ul className="space-y-2">
+                                        <li className={`cursor-pointer text-white ${!tagsSelectedOption?"text-gray-300": ""}`} 
+                                        onClick={()=> setTagsSelectedOption(null)}>View All</li>
+                                        {selectExistTags.map((tag)=>(
+                                            <li key={tag} className={`cursor-pointer text-sm py-1 px-4 rounded-full bg-gray-800 hover:text-gray-300 text-white ${tagsSelectedOption === tag ? "text-gray-300" : ""}`}
+                                            onClick={()=>setTagsSelectedOption(tag)}># {tag}</li>
+                                        ))}
+                                    </ul>
+                            </div>
+                        </div>
                         <div className="w-9/12">
                             <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-2 gap-10 px-4">
                                 {displayedBlogs.map((blog, index) => (
