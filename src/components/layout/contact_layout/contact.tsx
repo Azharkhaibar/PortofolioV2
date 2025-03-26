@@ -82,13 +82,13 @@ const Contact = () => {
                     </>
                 )}
                 <div className="text-white text-center pt-44 z-20">
-                    <h1 className="text-6xl font-bold">Contact Me</h1>
+                    <h1 className="text-4xl sm:text-4xl md:text-6xl lg:text-6xl  font-bold">Contact Me</h1>
                     <p className="mt-3 text-xl text">Got a question? Send me a message, and I'll get back to you soon.</p>
                 </div>
 
-                <div className="w-full h-auto flex justify-center mt-13 space-x-6">
+                <div className="w-full h-auto flex-col md:flex lg:flex justify-center mt-13 space-x-6">
           
-                    <div className="w-[35%] h-auto pl-6 pr-6 z-30">
+                    <div className="w-full sm:w-full md:w-[35%] lg:md:w-[35%] h-auto pl-6 pr-6 z-30">
                         <div className="w-full h-auto py-8 bg-gray-800 rounded-[20px] px-6">
                             <h2 className="text-4xl text-purple-500 font-bold">Get in Touch</h2>
                             <p className="text-gray-300 mt-2">

@@ -51,7 +51,7 @@ const EducationExperience: React.FC<Props> = ({ education }) => {
     }, []);
 
     return (
-        <div>
+        <div className="">
             <h2 className="text-4xl font-bold text-center mb-16">My Journey</h2>
             <div className="relative border-l-4 border-gray-800/60 pl-2 space-y-16">
                 {experiences.map((exp, index) => (
@@ -66,7 +66,7 @@ const EducationExperience: React.FC<Props> = ({ education }) => {
                         <div className="flex flex-col">
                             <div className="flex items-center">
                                 <h3 className="text-xl font-semibold">{exp.nama_instansi}</h3>
-                                <h3 className="text-xl font-semibold italic ml-2">{exp.posisi}</h3>
+                                <h3 className="text-md sm:text-md md:text-xl lg:text-xl font-semibold italic ml-2">{exp.posisi}</h3>
                             </div>
                             <p className="text-gray-400">{exp.periode_mulai} - {exp.periode_selesai}</p>
                             <p className="text-lg font-medium">{exp.jabatan}</p>

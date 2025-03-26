@@ -123,13 +123,13 @@ const PortofolioBody: React.FC<PortofolioBodyProps> = ({ activeSection, portofol
                 threshold={0.1}
                 initialOpacity={0.0}
             >
-                <div className="flex items-center p-4 w-10/12 mx-auto gap-6 mt-8 h-auto px-12 justify-center bg-gray-800/30 border border-gray-700/40 rounded-2xl">
+                <div className="flex items-center p-4 w-10/12 mx-auto gap-6 mt-8 h-auto px-9 sm:px-9 md:px-12 lg:px-12 justify-center bg-gray-800/30 border border-gray-700/40 rounded-2xl">
                     {ListPorto.map((porto, index) => (
                         <motion.div
                             key={index}
                             role="button"
                             tabIndex={0}
-                            className={`w-6/12 cursor-pointer p-4 flex flex-col justify-center gap-2 rounded-2xl ${currentSection === index ? "bg-purple-600" : "bg-gray-700/40"
+                            className={`w-4/12 sm:w-4/12 md:w-6/12 lg:w-6/12 cursor-pointer p-4 flex flex-col justify-center gap-1 rounded-2xl ${currentSection === index ? "bg-purple-600" : "bg-gray-700/40"
                                 }`}
                             onClick={() => setCurrentSection(index)}
                             onKeyDown={(e) => {
@@ -146,7 +146,7 @@ const PortofolioBody: React.FC<PortofolioBodyProps> = ({ activeSection, portofol
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                         >
                             <div className="flex justify-center">{porto.icon}</div>
-                            <p className={`text-white text-center text-xl ${currentSection === index ? "text-black" : ""}`}>
+                            <p className={`text-white text-center text-md sm:text-md md:text-xl lg:text-xl ${currentSection === index ? "text-black" : ""}`}>
                                 {porto.text}
                             </p>
                         </motion.div>
@@ -169,23 +169,24 @@ const PortofolioBody: React.FC<PortofolioBodyProps> = ({ activeSection, portofol
                 )}
 
                 {currentSection === 2 && (
-                    <div className="grid grid-cols-6 gap-5">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5 p-2 sm:p-4">
                         {ListTechIcon.map((tech, index) => (
                             <motion.div
                                 key={index}
-                                className="rounded-2xl p-5 bg-gray-900 shadow-lg"
+                                className="rounded-2xl p-4 sm:p-5 bg-gray-900 shadow-lg"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
-                                <div className="flex flex-col items-center gap-4">
-                                    <img src={tech.icon} alt={tech.title} className="w-auto h-[100px] object-cover" />
-                                    <p className="text-xl font-bold text-center text-white">{tech.title}</p>
+                                <div className="flex flex-col items-center gap-3 sm:gap-4">
+                                    <img src={tech.icon} alt={tech.title} className="w-auto h-[80px] sm:h-[100px] object-cover" />
+                                    <p className="text-lg sm:text-xl font-bold text-center text-white">{tech.title}</p>
                                 </div>
                             </motion.div>
                         ))}
                     </div>
                 )}
+
             </div>
         </div>
     );

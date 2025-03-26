@@ -6,7 +6,7 @@ import Test from '../../../assets/public/img/testexperience.png';
 
 const Pendidikan: React.FC = () => {
     const textHeadlines = [
-        { text: "Developing software with 2+ years of experience." },
+        { text: "Developing software with 2+ years of experience" },
         { text: "Got into programming in elementary school and have worked on various projects and companies." }
     ];
 

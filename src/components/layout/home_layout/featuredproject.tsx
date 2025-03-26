@@ -66,7 +66,7 @@ const FeaturedProject: React.FC = () => {
                                 viewport={{ once: true, amount: 0.2 }}
                                 custom={index}
                             >
-                                <div className="w-[100%] sm:w-[350px] md:w-[300px] mx-auto p-6 rounded-lg shadow-md border border-gray-700 bg-gray-900/40">
+                                <div className="w-[93%] sm:w-[350px] md:w-[300px] mx-auto p-6 rounded-lg shadow-md border border-gray-700 bg-gray-900/40">
                                     <h3 className="text-xl sm:text-2xl mb-3 font-semibold text-white">{projectAccess.nameproject}</h3>
                                     <p className="mb-4 text-gray-300 text-sm sm:text-base">{projectAccess.descriptionproject}</p>
 

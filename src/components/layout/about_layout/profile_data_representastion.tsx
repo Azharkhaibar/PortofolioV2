@@ -15,7 +15,7 @@ const GridProfiles = () => {
                 viewport={{ once: true }} 
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 whileHover={{ scale: 1.02 }}
-                className="p-10 bg-gradient-to-br from-blue-700 to-[#070744] text-white shadow-lg 
+                className=" p-6 sm:p-6 md:p-10 lg:p-10 bg-gradient-to-br from-blue-700 to-[#070744] text-white shadow-lg 
                             rounded-tr-xl rounded-bl-2xl h-auto 
                             sm:col-span-4 sm:row-span-2 area-learning"
             >
@@ -32,7 +32,7 @@ const GridProfiles = () => {
                 viewport={{ once: true }} 
                 transition={{ duration: 0.8, type: "spring" }}
                 whileHover={{ scale: 1.05 }}
-                className="p-10 bg-gradient-to-tl from-amber-700 to-amber-300 rounded rounded-tr-3xl rounded-br-5xl rounded-bl-3xl
+                className="p-6 sm:p-6 md:p-10 lg:p-10 bg-gradient-to-tl from-amber-700 to-amber-300 rounded rounded-tr-3xl rounded-br-5xl rounded-bl-3xl
                             shadow-lg text-gray-900 h-auto 
                             sm:col-span-2 sm:row-span-2 area-years"
             >
@@ -46,7 +46,7 @@ const GridProfiles = () => {
                 viewport={{ once: true }} 
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 whileHover={{ scale: 1.05 }}
-                className="p-10 bg-gradient-to-tr from-[#210827] to-[#9f0dc7] rounded-tl-3xl rounded rounded-bl-3xl 
+                className="p-6 sm:p-6 md:p-10 lg:p-10 bg-gradient-to-tr from-[#210827] to-[#9f0dc7] rounded-tl-3xl rounded rounded-bl-3xl 
                             shadow-lg hover:scale-105 transition-transform h-auto 
                             sm:col-span-2 sm:row-span-2 area-work"
             >
@@ -62,10 +62,10 @@ const GridProfiles = () => {
                 viewport={{ once: true }} 
                 transition={{ duration: 1, ease: "easeOut" }}
                 whileHover={{ scale: 1.03 }}
-                className="p-10 rounded bg-green-pattern shadow-lg rounded-tr-3xl rounded-br-3xl h-96
+                className="p-6 sm:p-6 md:p-10 lg:p-10 rounded bg-green-pattern shadow-lg rounded-tr-3xl rounded-br-3xl h-auto md:h-96 lg:h-96
                             sm:col-span-4 sm:row-span-2 area-transform"
             >
-                <p className="text-2xl text-white">
+                <p className="text-xl sm:text-xl md:text-2xl lg:text-2xl text-white">
                     Transforming startups of all scales with bespoke web experiences that leave a mark and drive growth.
                     Fueled by a love for design and development, I oversee projects from initial concepts to final launch, ensuring a flawless process.
                 </p>
@@ -99,7 +99,7 @@ const GridProfiles = () => {
                 viewport={{ once: true }} 
                 transition={{ duration: 0.8, type: "spring" }}
                 whileHover={{ scale: 1.05 }}
-                className="p-10 max-h-72 bg-gradient-to-tl from-amber-700 to-amber-300 rounded-3xl 
+                className="p-6 sm:p-6 md:p-10 lg:p-10 max-h-72 bg-gradient-to-tl from-amber-700 to-amber-300 rounded-3xl 
                             shadow-lg text-gray-900 h-auto 
                             sm:col-span-2 sm:row-span-2 area-projects"
             >

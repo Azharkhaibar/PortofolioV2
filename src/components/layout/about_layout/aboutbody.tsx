@@ -83,27 +83,27 @@ const AboutBody: React.FC = () => {
 
     return (
         <div className="px-[2.5%]">
-            <div className="w-full h-auto flex pt-28">
-                <div className="w-[30%] h-[300px] sticky top-20">
-                    <img src={fotoGue} alt="Azhar's Photo" className="w-[280px] rounded-xl h-auto object-contain mx-auto" />
+            <div className="w-full h-auto flex-col sm:flex-col md:flex-row lg:flex pt-28">
+                <div className="w-full sm:w-full md:w-[30%] lg:w-[30%] h-[300px] none sm:none md:sticky lg:sticky top-20">
+                    <img src={fotoGue} alt="Azhar's Photo" className="w-[280px] rounded-full sm:rounded-full md:rounded-xl lg:rounded-xl h-auto object-contain mx-auto" />
                     <h3 className="text-center text-[14px] mt-3 text-gray-500">Fullstack Developer & UI/UX Designer</h3>
                 </div>
-                <div className="w-[70%] h-full pr-[8%] text-white">
+                <div className="w-full p-2 pt-10 sm:pt-10 sm:w-full md:w-[70%] lg:w-[70%] h-full mx-auto sm:mx-auto sm:px-10 pr-0 sm:pr-0 md:pr-[6%] lg:pr-[6%] text-white">
                     <SplitText
                         text="Nice to meet you"
-                        className="text-xl mb-4 text-white/40 font-light"
+                        className="text-md sm:text-md md:text-xl mb-4 text-white/40 font-light"
                         delay={40}
                     />
                     <br />
                         <SplitText
                             text="Hi there,"
-                            className="text-6xl font-bold"
+                        className="text-4xl sm:text-4xl md:text-6xl lg:text-6xl font-bold"
                             delay={40}
                         />
                         <br />
                         <SplitText
                             text="I'am Azhar Khaibar"
-                            className="text-6xl font-bold"
+                        className="text-4xl sm:text-4xl md:text-6xl font-bold"
                             delay={50}
                         />
                  
@@ -143,7 +143,7 @@ const AboutBody: React.FC = () => {
                     </motion.div>
                     <BlurText
                         text={`I’m Azhar, a Fullstack Developer and UI/UX Designer with a passion for creating seamless digital experiences.  my technical knowledge.\n\nMy approach to development combines a keen eye for design with a solid understanding of both front-end and back-end technologies. Whether it’s transforming wireframes into interactive prototypes or writing clean, scalable code, I focus on delivering solutions that are reliable, scalable, and intuitive for users. Staying updated with the latest industry trends, frameworks, and design principles is a core part of my work philosophy, allowing me to bring innovative and efficient solutions to every project.\n\nBeyond technical skills, I believe in the power of collaboration and clear communication. Working with cross-functional teams has shown me the importance of aligning on vision and goals, and I thrive in environments where I can contribute creatively while also learning from others. I’m excited to continue building impactful digital experiences, and I look forward to connecting with like-minded professionals who share the same passion for technology and design. Let’s collaborate and make ideas come to life!`}
-                        className="text-[22px] font-medium text-white/80 mt-8"
+                        className="text-[18px] sm:text-[18px] md:text-[22px] lg:text-[22px] font-medium text-white/80 mt-8"
                         delay={20}
                         animateBy="words"
                         direction="bottom"

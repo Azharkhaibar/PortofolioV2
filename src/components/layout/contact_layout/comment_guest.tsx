@@ -44,7 +44,7 @@ export default function CommentSection() {
     };
 
     return (
-        <div className="w-[55%] h-auto bg-gray-800/40 p-7 rounded-xl">
+        <div className="w-full sm:w-full md:w-[55%] lg:md:w-[55%] h-auto  p-7 rounded-xl">
             <div className="w-auto h-auto bg-gray-700/40 p-4 rounded-xl">
                 <div className="flex items-center gap-4">
                     <div className="p-2 rounded-full bg-gray-700">
