@@ -71,7 +71,7 @@ export const education = [
     },
     {
         date: '2019 - 2023',
-        school: 'Universitas Respati Indonesia',
+        school: 'Universitas Esa Unggul',
         major: 'Sistem Informasi',
     },
 ];

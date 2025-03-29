@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const fileName = uniqueSuffix + path.extname(file.originalname);
-    console.log(`File saved as: ${fileName}`); // Verifikasi nama file yang disimpan
+    console.log(`File saved as: ${fileName}`); 
     cb(null, fileName);
   },
 });

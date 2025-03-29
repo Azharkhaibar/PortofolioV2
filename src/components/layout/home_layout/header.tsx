@@ -19,12 +19,12 @@ const Header: React.FC = () => {
             <Navbar />
             <div className="w-full max-w-3xl mx-auto">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 leading-tight text-white font-bold">
-                    <SplitText text="Hi," className="gradient-text text-3xl sm:text-4xl" delay={50} />
+                    <SplitText text="Hi," className="text-3xl sm:text-4xl" delay={50} />
                     <SplitText text="I'm " className="text-3xl sm:text-4xl text-white font-bold mb-4" delay={30} />
                     <br />
                     <SplitText
                         text="Azhar Khaibar"
-                        className="text-5xl sm:text-[60px] md:text-[80px] bg-gradient-to-r from-pink-600 to-purple-800 font-bold bg-clip-text"
+                        className="text-4xl sm:text-4xl md:text-5xl sm:text-[60px] md:text-[80px] bg-gradient-to-r from-pink-600 to-purple-800 font-bold bg-clip-text"
                         delay={30}
                     />
                 </h1>

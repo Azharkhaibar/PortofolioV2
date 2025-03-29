@@ -21,11 +21,11 @@ const TechStack: React.FC = () => {
         })
     };
     return (
-        <div className="w-full h-auto flex items-center px-7">
-            <div className="w-1/2 h-full p-6 pl-20 text-white">
+        <div className="w-full h-auto flex-col md:flex-row lg:flex items-center px-7">
+            <div className="w-full sm:w-full md:w-1/2 lg:md:w-1/2 h-full md:p-6 pt-16 sm:pt-16 md:pt-0 lg:p-6 pl-0 md:pl-20 lg:pl-20 text-white">
                 <SplitText
                     text=" I've used these things to create powerful software that helps people and businesses"
-                    className="text-5xl font-medium mt-10"
+                    className="text-3xl md:text-5xl lg:text-5xl font-medium mt-10"
                     delay={50}
                     animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
                     animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
@@ -59,7 +59,7 @@ const TechStack: React.FC = () => {
                     ))}
                 </motion.div>
             </div>
-            <div className="w-1/2 h-full flex justify-center items-center overflow-hidden">
+            <div className="w-full sm:w-full md:w-1/2 lg:w-1/2 h-full flex justify-center items-center overflow-hidden">
                 <TextSphere />
             </div>
         </div>

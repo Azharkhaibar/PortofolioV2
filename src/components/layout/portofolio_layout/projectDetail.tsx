@@ -89,8 +89,8 @@ const ProjectDetail = () => {
         <>
             <div className="bg-[#0F1017] min-h-screen">
                 <Navbar />
-                <div className="w-full px-[120px] gap-8 p-6 mt-20 text-gray-200 flex justify-center">
-                    <div className="w-1/2">
+                <div className="w-full md:px-[120px] gap-8 p-6 mt-20 text-gray-200 flex-col sm:flex-col md:flex lg:flex-row justify-center">
+                    <div className="w-full sm:w-full md:w-1/2">
                         <motion.img
                             src={imageUrl}
                             alt={project.nama_project}
@@ -149,10 +149,10 @@ const ProjectDetail = () => {
                         </SpotlightCard>
                     </div>
 
-                    <div className="w-1/2">
+                    <div className="w-full sm:w-full md:w-1/2">
                         <SplitText
                         text={project.nama_project}
-                            className="text-7xl font-bold text-white mb-4 font-poppins"
+                            className="text-4xl sm:text-4xl md:text-7xl sm:pt-10 font-bold text-white md:mb-4 font-poppins"
                             delay={50}
                             animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
                             animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../../utils/format";
 import gridProfiles from "../about_layout/profile_data_representastion";
+import { Filter } from "lucide-react";
 
 export interface BlogAttributesData {
     id_blog: number;
@@ -25,7 +26,7 @@ const BlogPage = () => {
     const [error, setError] = useState<string | null>(null);
     const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
-    const [tagsSelectedOption, setTagsSelectedOption]= useState<string|null>(null);
+    const [tagsSelectedOption, setTagsSelectedOption] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -57,13 +58,13 @@ const BlogPage = () => {
     const filteredBlogsByCategory = selectedCategory ? blogs.filter(blog => blog.kategori_blog === selectedCategory) : blogs;
     const selectExistTags = [...new Set(blogs.flatMap(blog => blog.tags.split(", ").map(tag => tag.trim())))];
     const filteredBlogsByTags = tagsSelectedOption ? filteredBlogsByCategory.filter(blog =>
-            blog.tags.split(", ").map(tag => tag.trim()).includes(tagsSelectedOption)) : filteredBlogsByCategory;
+        blog.tags.split(", ").map(tag => tag.trim()).includes(tagsSelectedOption)) : filteredBlogsByCategory;
     const totalPages = Math.ceil(filteredBlogsByTags.length / itemsPerPage);
     const displayedBlogs = filteredBlogsByTags.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
-    
+
     return (
         <div>
             <Navbar />
@@ -77,9 +78,9 @@ const BlogPage = () => {
                 {error && <p className="text-center text-red-500 mt-10">{error}</p>}
 
                 {!loading && !error && (
-                    <div className="w-full h-auto mt-16 flex justify-center">
-                        <div className="w-2/12">
-                            <ul className="w-48 rounded-xl border border-gray-700/40 bg-gray-800/40 backdrop-blur-xl p-8 space-y-4 text-white mx-auto">
+                    <div className="w-full h-auto mt-16 flex-col sm:flex-col md:flex-row lg:flex justify-center">
+                        <div className="w-full sm:w-full md:w-2/12">
+                            <ul className="w-full md:w-48 flex-row sm:flex-row overflow-x-auto scrollbar-hide md:flex-col   overflow-hidden gap-6 sm:gap-6 md:gap-2 rounded-xl border border-gray-700/40 bg-gray-800/40 backdrop-blur-xl p-8 space-y-4 text-white mx-auto">
                                 <li
                                     className={`hover:text-gray-300 cursor-pointer ${!selectedCategory ? "text-gray-300" : ""}`}
                                     onClick={() => setSelectedCategory(null)}
@@ -96,19 +97,32 @@ const BlogPage = () => {
                                 ))}
                             </ul>
 
-                            <div className="w-48 border border-gray-700/40 bg-gray-800/10 mx-auto mt-10 rounded-xl flex-wrap p-4">
-                                    <ul className="space-y-2">
-                                        <li className={`cursor-pointer text-white ${!tagsSelectedOption?"text-gray-300": ""}`} 
-                                        onClick={()=> setTagsSelectedOption(null)}>View All</li>
-                                        {selectExistTags.map((tag)=>(
-                                            <li key={tag} className={`cursor-pointer text-sm py-1 px-4 rounded-full bg-gray-800 hover:text-gray-300 text-white ${tagsSelectedOption === tag ? "text-gray-300" : ""}`}
-                                            onClick={()=>setTagsSelectedOption(tag)}># {tag}</li>
-                                        ))}
-                                    </ul>
+                            <div className="w-auto max-w-full border border-gray-700/40 bg-gray-800/10 mx-auto mt-10 rounded-xl p-4 flex flex-wrap gap-2 mb-5 sm:mb-5 md:mb-0">
+                            <div className="flex items-center gap-3 mb-4">
+                            <Filter size={20} className="text-white" />
+                            <h2 className="text-white">Filter by Tags</h2>
+                            </div>
+                                <ul className="flex flex-wrap gap-2">
+                                    <li
+                                        className={`cursor-pointer text-white px-4 py-2 rounded-full bg-gray-700/50 ${!tagsSelectedOption ? "text-gray-300" : ""}`}
+                                        onClick={() => setTagsSelectedOption(null)}
+                                    >
+                                        View All
+                                    </li>
+                                    {selectExistTags.map((tag) => (
+                                        <li
+                                            key={tag}
+                                            className={`cursor-pointer text-sm px-4 py-2 rounded-full bg-gray-800 hover:text-gray-300 text-white ${tagsSelectedOption === tag ? "text-gray-300" : ""}`}
+                                            onClick={() => setTagsSelectedOption(tag)}
+                                        >
+                                            # {tag}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
-                        <div className="w-9/12">
-                            <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-2 gap-10 px-4">
+                        <div className="w-full sm:w-full md:w-9/12">
+                            <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-2 gap-10 px-0 sm:px-0 md:px-4">
                                 {displayedBlogs.map((blog, index) => (
                                     <motion.div
                                         key={blog.id_blog}

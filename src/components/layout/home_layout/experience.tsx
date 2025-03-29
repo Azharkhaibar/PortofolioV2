@@ -11,10 +11,10 @@ const Pendidikan: React.FC = () => {
     ];
 
     return (
-        <div className="w-full text-white mt-20 px-4 sm:px-6 lg:px-12">
+        <div className="w-full text-center text-white mt-20 px-4 sm:px-6 lg:px-12">
             <BlurText
                 text={textHeadlines[0].text}
-                className="text-center text-2xl pl-10 lg:pl-42 sm:text-3xl md:text-4xl lg:text-5xl px-4 sm:px-10 md:px-20 font-medium"
+                className="text-center text-2xl lg:pl-42 sm:text-3xl md:text-4xl lg:text-5xl px-4 sm:px-10 md:px-20 font-medium"
                 delay={30}
                 animateBy="words"
                 direction="top"
@@ -77,7 +77,7 @@ const Pendidikan: React.FC = () => {
                         <div className="flex flex-col">
                             {[
                                 { date: "2018 - 2019", school: "SMA AL-Minhaj Islamic Boarding School", major: "Matematika dan IPA" },
-                                { date: "2018 - 2019", school: "Universitas Respati Indonesia", major: "Sistem Informasi" }
+                                { date: "2018 - 2019", school: "Universitas Esa Unggul", major: "Sistem Informasi" }
                             ].map((education, index) => (
                                 <div key={index} className="flex justify-between items-center mb-4">
                                     <div className="flex items-center">
